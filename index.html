@@ -4,289 +4,305 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ryunosuke Takada</title>
-
-    <!-- 
-      CSS: 参照画像のスタイルを完全に再現するように調整
-      (フォントサイズ, h3の色, レイアウト幅など)
-    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Basic Reset & Typography */
+        /* Github Pages "Minimal" Theme (orderedlist) Recreation 
+           Based on the design of https://motimotipurinn.github.io/
+        */
+
+        /* Base Styles */
         body {
-            /* 参照画像 (motimoti_purinn) の基本フォントサイズに合わせる
-              (li要素のサイズから 15px と判断) 
-            */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            font-size: 13px; 
-            line-height: 1.6;
             background-color: #fff;
+            padding: 50px;
+            font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
             color: #333;
-            padding: 20px;
-            margin: 0 auto;
-            max-width: 750px;
+            font-weight: 400;
+            margin: 0;
         }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: #222;
+            margin: 0 0 20px;
+        }
+
+        p, ul, ol, table, pre, dl {
+            margin: 0 0 20px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.1;
+        }
+
+        h1 { font-size: 28px; }
+        h2 { color: #393939; }
+        h3, h4, h5, h6 { color: #494949; }
 
         a {
-            color: #0366d6;
+            color: #4183C4; /* The specific blue used in the theme */
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
 
-        /* Header (Left Sidebar) */
+        /* Layout Wrapper (Width 860px centered) */
+        .wrapper {
+            width: 860px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar (Left, 270px wide - tweaked to match visual weight) */
         header {
-            width: 25%;
+            width: 270px;
             float: left;
-            padding-right: 20px;
-            box-sizing: border-box; 
-            text-align: left;
+            position: fixed; /* Keeps sidebar fixed on desktop if desired, or standard float */
+        }
+        /* Note: Original 'Minimal' theme often floats without fixed position, 
+           but 'orderedlist' theme usually has a distinct left column. 
+           We will use float to match the standard behavior. */
+        header {
+            position: static; /* Resetting to standard flow for better content matching */
+            float: left;
+        }
+
+        header ul {
+            list-style: none;
+            height: 40px;
+            padding: 0;
+            background: #eee;
+            border-radius: 5px;
+            width: 270px;
         }
 
         header h1 {
-            /*/
-            font-size: 20px; 
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        header h1 a {
-            color: #0366d6;
-        }
-
-        header img {
-            width: 100%;
-            max-width: 200px; /* Max image width */
-            height: auto;
-            border-radius: 6px; 
+            width: 270px; /* constraining width */
+            font-size: 24px; /* Slightly smaller for sidebar title */
+            line-height: 1.5;
             margin-bottom: 10px;
         }
-        /* 1. アイコン下のキャプション（新規追加） */
-        .icon-caption {
-            font-size: 13px;
-            color: #586069;
-            text-align: left;
-            margin-top: 5px;
-            margin-bottom: 10px; /* footerとのマージンを調整 */
-            padding: 0 5px; /* 左右に少し余白 */
-        }
+
         header p {
-            /* サイドバーのbioテキスト。
-              今回のテキストでは使用しませんが、footer用にスタイルを定義します。
-            */
-            font-size: 14px;
-            color: #586069; 
+            font-size: 13px; /* Caption text size */
+            color: #777;
+        }
+
+        /* Sidebar Image */
+        header img {
+            width: 100%; /* Fits the 270px width */
+            border-radius: 4px; /* Slight radius */
             margin-bottom: 10px;
         }
 
-        /* Instagramリンクボタン (前回のスタイルを流用)
-          今回のテキストでは使用しません
-        */
-        header .view a {
-            display: inline-block;
-            padding: 8px 16px;
-            border: 1px solid #d1d5da;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 14px;
-            color: #24292e;
+        /* Icon Container */
+        .social-icons {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            font-size: 20px;
         }
-        header .view a:hover {
-            background-color: #f6f8fa;
-            text-decoration: none;
+        .social-icons a {
+            color: #494949;
+            margin-right: 15px;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover {
+            color: #4183C4;
         }
 
+        /* Sidebar Footer */
         header .footer {
-            font-size: 12px;
-            color: #6a737d;
-            margin-top: 30px;
+            margin-top: 40px;
+            font-size: 11px;
+            color: #999;
+        }
+        
+        header .footer p {
+            margin-bottom: 0;
         }
 
-        /* Main Content (Right Area) */
-        .container {
-            width: 75%;
+        /* Main Content (Right, 500px wide) */
+        section {
+            width: 500px;
             float: right;
-            padding-left: 20px;
-            box-sizing: border-box; 
+            padding-bottom: 50px;
         }
 
-        .container h1 {
-            /* 参照画像 (もちもち (@motimoti_purinn)) のサイズに一致 */
-            font-size: 27px; 
-            font-weight: 600;
-            margin-top: 0;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eaecef;
+        section h1 {
+            font-size: 32px; /* Main title larger */
+            font-weight: bold;
+            letter-spacing: -1px;
+            border-bottom: 1px solid #eee; /* No border on h1 in some variants, but h2 yes. */
+            border: none; 
+            margin-bottom: 30px;
+        }
+        
+        /* Section Headers with Underline */
+        section h2 {
+            font-size: 22px;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
             padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
         }
 
-        .container h2 {
-            /* 参照画像 (About Me, Career) のサイズに一致 */
-            font-size: 22px; 
-            font-weight: 600;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 8px;
-        }
-
-        .container h3 {
-            /* 参照画像 (🔹 Projects) のスタイルに一致 */
-            font-size: 15px;
-            font-weight: 600;
+        section h3 {
+            font-size: 16px;
+            font-weight: bold;
             margin-top: 25px;
             margin-bottom: 10px;
         }
-        
-        /* About Me セクションの段落 */
-        .about-me-text {
-            margin-bottom: 15px;
-        }
 
-        ul {
+        /* List Styles */
+        section ul {
             padding-left: 20px;
-            margin-top: 0;
-            margin-bottom: 15px;
+            list-style-type: disc;
+        }
+        
+        section ul ul {
+            margin-bottom: 0;
         }
 
-        li {
+        section li {
             margin-bottom: 5px;
+            line-height: 1.6;
         }
 
-        /* Nested lists */
-        ul ul {
-            margin-top: 5px;
-            margin-bottom: 10px;
-            padding-left: 20px;
-        }
-
-        li strong {
-            /* 太字のラベル (例: "年齢：") 
-              参照画像に合わせて、デフォルトの太字 (color: #24292e) を使用 
-            */
-            color: #24292e;
-            font-weight: 600; /* 参照画像に合わせて 600 (semibold) に設定 */
-        }
-        
-        /* 太字のサブタイトル (例: "[研究論文] リーマン...")
-          li の中にある太字
-        */
-        li strong.subtitle {
-            font-weight: 600;
-            color: #24292e;
-        }
-        
-        /* 概要テキスト (例: "概要: ...") */
+        /* Custom Classes */
         .overview {
-            padding-left: 1.5em; /* インデントを追加 */
-            color: #333; /* 本文と同じ色 */
+            font-size: 13px;
+            color: #666;
+            margin-top: 2px;
+            margin-bottom: 8px;
+            padding-left: 0; /* Align with bullet text */
         }
-        
-        /* 言語切り替えボタンのスタイル */
+
+        strong {
+            font-weight: bold;
+            color: #222;
+        }
+
+        .year {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Language Toggle - Positioned cleanly */
         .lang-toggle {
             text-align: right;
-            margin-top: 5px;
-            margin-bottom: -10px;
-            font-size: 14px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #999;
         }
         .lang-toggle a {
-            color: #0366d6;
-            text-decoration: none;
             cursor: pointer;
-            padding: 0 5px;
+            margin-left: 10px;
+            color: #999;
+        }
+        .lang-toggle a.active {
+            color: #4183C4;
+            font-weight: bold;
         }
         .lang-toggle a:hover {
-            text-decoration: underline;
-        }
-        .lang-toggle .lang-separator {
-            color: #586069;
+            color: #4183C4;
         }
 
-        /* Responsive Design for smaller screens */
-        @media (max-width: 768px) {
+        /* Responsive Design */
+        @media print, screen and (max-width: 960px) {
+            body {
+                padding: 20px;
+            }
+            .wrapper {
+                width: auto;
+                margin: 0;
+            }
+            header, section {
+                float: none;
+                position: static;
+                width: auto;
+            }
             header {
-                float: none;
-                width: 100%;
-                text-align: center; /* Center sidebar content on mobile */
                 padding-right: 0;
-                margin-bottom: 20px;
+                margin-bottom: 40px;
             }
-            
+            section {
+                border: 1px solid #eee;
+                border-width: 1px 0 0 0;
+                padding-top: 40px;
+            }
+            header h1 {
+                width: auto;
+            }
             header img {
-                max-width: 200px; /* Maintain image size */
-            }
-
-            .container {
-                float: none;
-                width: 100%;
-                padding-left: 0;
-            }
-            
-            .lang-toggle {
-                text-align: center; /* モバイルでは中央寄せ */
-                margin-bottom: 15px;
+                max-width: 200px; /* Limit image size on mobile */
             }
         }
     </style>
 
-    <!-- JavaScript: 言語切り替え機能 -->
     <script>
         function switchLang(lang) {
-            // すべての言語コンテンツを非表示にする
-            var contents = document.querySelectorAll('.lang-content');
-            contents.forEach(function(content) {
+            // コンテンツの切り替え
+            document.querySelectorAll('.lang-content').forEach(function(content) {
                 content.style.display = 'none';
             });
-            
-            // 選択された言語のコンテンツを表示する
-            var selectedContent = document.getElementById('lang-' + lang);
-            if (selectedContent) {
-                selectedContent.style.display = 'block';
-            }
+            document.getElementById('lang-' + lang).style.display = 'block';
+
+            // アイコンキャプションの切り替え
+            document.querySelectorAll('.lang-content-icon').forEach(function(icon) {
+                icon.style.display = 'none';
+            });
+            var selectedIcon = document.getElementById('lang-' + lang + '-icon');
+            if (selectedIcon) selectedIcon.style.display = 'block';
+
+            // トグルボタンのスタイル更新
+            document.querySelectorAll('.lang-toggle a').forEach(a => a.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
         }
     </script>
 </head>
 <body>
 
-    <!-- 左側のサイドバー -->
-    <header>
-        
-        
-        <!-- 
-          1. アイコン下のキャプション (言語切り替え対応)
-        -->
-        <div id="lang-jp-icon" class="lang-content-icon" style="display: none;">
-            <p class="icon-caption">上記アイコンは僕の○□のメガネがモチーフになっています。</p>
-        </div>
-        <div id="lang-en-icon" class="lang-content-icon" style="display: none;">
-            <p class="icon-caption">The icon above is based on my ○□ glasses.</p>
-        </div>
+    <div class="wrapper">
+        <header>
+            <img src="profile.jpg" alt="Ryunosuke Takada" onerror="this.src='https://via.placeholder.com/270x270?text=Photo'">
+            
+            <h1>@ryu_percussion</h1>
+            
+            <div class="social-icons">
+                <a href="mailto:ryu.percussion.contact@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.instagram.com/ryu_percussion/" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
 
-        <p class="footer">Hosted on GitHub Pages — Theme by orderedlist</p>
-    </header>
+            <div id="lang-jp-icon" class="lang-content-icon">
+                <p>上記アイコンは僕の○□のメガネがモチーフになっています。</p>
+            </div>
+            <div id="lang-en-icon" class="lang-content-icon" style="display: none;">
+                <p>The icon above is based on my ○□ glasses.</p>
+            </div>
 
-    <!-- 右側のメインコンテンツ -->
-    <div class="container">
-        
-        <!-- 言語切り替えボタン -->
-        <div class="lang-toggle">
-            <a onclick="switchLang('jp')">日本語</a>
-            <span class="lang-separator">/</span>
-            <a onclick="switchLang('en')">English</a>
-        </div>
+            <div class="footer">
+                <p>Hosted on GitHub Pages — Theme by orderedlist</p>
+            </div>
+        </header>
 
-        <section id="main_content">
+        <section>
+            
+            <div class="lang-toggle">
+                <a onclick="switchLang('jp')" id="btn-jp" class="active">日本語</a> / 
+                <a onclick="switchLang('en')" id="btn-en">English</a>
+            </div>
 
-            <!-- ================================== -->
-            <!--           日本語コンテンツ           -->
-            <!-- ================================== -->
             <div id="lang-jp" class="lang-content">
-                
-                <h1>RYU</h1>
+                <h1>Ryunosuke Takada</h1>
 
                 <h2>About Me</h2>
-                <p class="about-me-text">
-    
+                <p>
                     2007年生まれ.
                     幼少期より数学及び音楽（ピアノ、打楽器、作編曲）に強い興味を抱き、現在は両者の関係性に着目し、数的アルゴリズムによる作曲や、数学への聴覚的アプローチの導入など、両者を統合したインタラクティブな表現方法を追求.
                     また、自身の研究知見を楽器設計に応用し、デザイン、ブランディング、演奏までを一貫して行う。(イタリア国際打楽器コンクール最高位)
@@ -297,9 +313,14 @@
                 <ul>
                     <li><strong>年齢：</strong>18歳</li>
                     <li><strong>学部：</strong>経済学部1年</li>
-                    <li><strong>興味:</strong> 数理音楽学 / 数学 / 音楽 / 物理学 / アルゴリズミック作曲 / AI / プログラミング / 絵画 / デザイン / 俳句 / ルービックキューブ / ギフテッド教育/ STEM教育 / 機械学習/ 楽器設計</li>
-                    <li><strong>研究テーマ：</strong>数理音楽学/アルゴリズミック作曲/音響物理学 / 解析的数論 / AI・機械学習 / ソニフィケーション / ζ関数 / 素数 / STEM・ギフテッド教育</li>
-                   
+                    <li><strong>興味:</strong> 数理音楽学 / 数学 / 音楽 / 物理学 / アルゴリズミック作曲 / AI / プログラミング / 絵画 / デザイン / 俳句 / ルービックキューブ / ギフテッド教育 / STEM教育 / 機械学習 / 楽器設計</li>
+                    <li><strong>研究テーマ：</strong>数理音楽学 / アルゴリズミック作曲 / 音響物理学 / 解析的数論 / AI・機械学習 / ソニフィケーション / ζ関数 / 素数 / STEM・ギフテッド教育</li>
+                </ul>
+
+                <h2>Career</h2>
+                <ul>
+                    <li><span class="year">2025年</span> RYU Percussion 代表</li>
+                    <li><span class="year">2026年</span> steAm Inc.</li>
                 </ul>
 
                 <h2>Skills</h2>
@@ -331,7 +352,7 @@
                     <li><strong>応用:</strong> 楽器デザイン、音響インスタレーション</li>
                 </ul>
                 
-                <h3>◾️言語(Languages)</h3>
+                <h3>◾️言語 (Languages)</h3>
                 <ul>
                     <li>ドイツ語、フランス語、英語、日本語、イタリア語、スペイン語</li>
                 </ul>
@@ -348,11 +369,11 @@
                 <h3>◾️研究論文 & 執筆 (Publications & Writing)</h3>
                 <ul>
                     <li>
-                        <strong class="subtitle">[研究論文] リーマンゼータ零点の多角的ソニフィケーション：相補的音響表現による数論的構造の知覚的解析 (2025)</strong>
+                        <strong>[研究論文] リーマンゼータ零点の多角的ソニフィケーション：相補的音響表現による数論的構造の知覚的解析 (2025)</strong>
                         <div class="overview">概要: ゼータ関数の零点を、ソニフィケーションし、その知覚的有効性を評価する試み。</div>
                     </li>
                     <li>
-                        <strong class="subtitle">[研究論文] スネアドラムの構成要素がその音響特性に与える物理的影響の定量的評価 (2025)</strong>
+                        <strong>[研究論文] スネアドラムの構成要素がその音響特性に与える物理的影響の定量的評価 (2025)</strong>
                         <div class="overview">概要: スネアドラムの主要要素がそのティンバーに与える影響を定量化。楽器設計理論の基盤。</div>
                     </li>
                 </ul>
@@ -360,12 +381,12 @@
                 <h3>◾️開発 (Software & Systems)</h3>
                 <ul>
                     <li>
-                        <strong class="subtitle">Mathematical Composition System (2024)</strong>
+                        <strong>Mathematical Composition System (2024)</strong>
                         <div class="overview">概要: 確率過程（マルコフ連鎖等）及び統計的手法を用いたリズム・音響生成システム。</div>
                         <div class="overview">実装: Pythonにて実装。</div>
                     </li>
                     <li>
-                        <strong class="subtitle">音響信号処理の自動可視化ツール (内部ツール)</strong>
+                        <strong>音響信号処理の自動可視化ツール (内部ツール)</strong>
                         <div class="overview">概要: FFT、PSD、ウェーブレット変換など、音響データ解析の結果をバッチ処理で自動可視化するツール。研究・開発効率の向上に貢献。</div>
                     </li>
                 </ul>
@@ -373,16 +394,16 @@
                 <h3>◾️音楽活動、作品 (Art Works & Performances)</h3>
                 <ul>
                     <li>
-                        <strong class="subtitle">Snare Solo / Snare × Piano (Instagram)</strong>
+                        <strong>Snare Solo / Snare × Piano (Instagram)</strong>
                         <div class="overview">概要: 自作スネアドラム（RYU Percussion）のソロ演奏および、スネアとピアノの演奏。</div>
                     </li>
                     <li>
-                        <strong class="subtitle">Solo Works</strong>
+                        <strong>Solo Works</strong>
                         <div class="overview">概要: スネアドラムソロやスネアコンチェルトなど。数理的手法に基づく作曲など。</div>
                     </li>
                 </ul>
 
-                <h3>◾️教育(Education)</h3>
+                <h3>◾️教育 (Education)</h3>
                 <ul>
                     <li>数学、音楽、芸術、プログラミングなどさまざまな分野を横断する、統合的教育モデルを構想。</li>
                     <li>STEM教育とギフテッド教育を融合させた多様で創造的な教育像を提案。</li>
@@ -413,25 +434,16 @@
                 </p>
                 <ul>
                     <li>
-                        <!-- 以前の会話で指定されたInstagramリンクをここに配置します -->
                         <a href="https://www.instagram.com/ryu_percussion/" target="_blank" rel="noopener noreferrer">Instagram (@ryu_percussion)</a>
                     </li>
-                    <!-- 他のSNSリンクがあれば、ここに追加できます -->
-                    <!-- <li><a href="#">X (Twitter)</a></li> -->
                 </ul>
 
-            </div> <!-- /lang-jp -->
+            </div> <div id="lang-en" class="lang-content" style="display:none;">
 
-
-            <!-- ================================== -->
-            <!--           英語コンテンツ           -->
-            <!-- ================================== -->
-            <div id="lang-en" class="lang-content" style="display:none;">
-
-                <h1>RYU</h1>
+                <h1>Ryunosuke Takada</h1>
 
                 <h2>About Me</h2>
-                <p class="about-me-text">
+                <p>
                     Born in 2007.
                     From an early age, I developed a profound interest in both Mathematics (specifically Prime Numbers and the Riemann Zeta Function) and Music (Piano, Percussion, Composition, and Arranging). Currently, I focus on the interrelation between these two fields, pursuing new expressive methods through the integration of stochastic/statistical composition via numerical algorithms, and the introduction of auditory approaches (Sonification) to mathematical concepts.
                     Drawing from my personal background, I am also deeply engaged in developing diverse and creative educational models for Gifted and STEAM Education in Japan, transcending traditional academic and artistic boundaries.
@@ -445,6 +457,12 @@
                     <li><strong>Research Themes:</strong> Mathematical Musicology / Algorithmic Composition / Acoustical Physics / Analytic Number Theory / AI & Machine Learning / Sonification / ζ-Function / Prime Numbers / STEM & Gifted Education</li>
                 </ul>
 
+                <h2>Career</h2>
+                <ul>
+                    <li><span class="year">2025</span> Representative, RYU Percussion</li>
+                    <li><span class="year">2026</span> steAm Inc.</li>
+                </ul>
+
                 <h2>Skills</h2>
                 <h3>◾️Mathematics & Physics</h3>
                 <ul>
@@ -456,7 +474,7 @@
                 <h3>◾️Music & Composition</h3>
                 <ul>
                     <li><strong>Performance:</strong> Piano, Snare Drum Solo, Percussion </li>
-                    <li><strong>Theory & Composition:</strong> Mathematical Composition (Stochastic Models, Markov Chains, Xenakis' Stochastic Methods, Acoustic Plural Structure), Arrangement, Sound Design, Polyrhythms ,(Possesses Absolute Pitch)</li>
+                    <li><strong>Theory & Composition:</strong> Mathematical Composition (Stochastic Models, Markov Chains, Xenakis' Stochastic Methods, Acoustic Plural Structure), Arrangement, Sound Design, Polyrhythms, (Possesses Absolute Pitch)</li>
                     <li><strong>Application:</strong> Instrument Design, Acoustic Analysis, Physical Sound Modeling, Sound Engineering</li>
                 </ul>
 
@@ -484,7 +502,7 @@
                 <ul>
                     <li>
                         <strong>RYU Percussion</strong>
-                        <div class="overview">Overview: Custom instrument design based on acoustical physics. Engages in design, production, performance,and branding.</div>
+                        <div class="overview">Overview: Custom instrument design based on acoustical physics. Engages in design, production, performance, and branding.</div>
                     </li>
                     <li><strong>Instruments:</strong> Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…</li>
                 </ul>
@@ -492,11 +510,11 @@
                 <h3>◾️Publications & Writing</h3>
                 <ul>
                     <li>
-                        <strong class="subtitle">[Research Paper] Multi-Faceted Sonification of Riemann Zeta Zeros: Perceptual Analysis of Number Theoretic Structures via Complementary Acoustic Representation (2025)</strong>
+                        <strong>[Research Paper] Multi-Faceted Sonification of Riemann Zeta Zeros: Perceptual Analysis of Number Theoretic Structures via Complementary Acoustic Representation (2025)</strong>
                         <div class="overview">Overview: Attempt to evaluate the perceptual efficacy of mapping Zeta function zeros to various sonification parameters.</div>
                     </li>
                     <li>
-                        <strong class="subtitle">[Research Paper] Quantitative Evaluation of the Physical Impact of Snare Drum Components on their Acoustic Characteristics (2025)</strong>
+                        <strong>[Research Paper] Quantitative Evaluation of the Physical Impact of Snare Drum Components on their Acoustic Characteristics (2025)</strong>
                         <div class="overview">Overview: Quantification of the effects of primary snare drum components on timbre. Forms the theoretical foundation for RYU Percussion design.</div>
                     </li>
                 </ul>
@@ -504,12 +522,12 @@
                 <h3>◾️Development (Software & Systems)</h3>
                 <ul>
                     <li>
-                        <strong class="subtitle">Mathematical Composition System (2024)</strong>
+                        <strong>Mathematical Composition System (2024)</strong>
                         <div class="overview">Overview: A rhythm and acoustic generation system utilizing stochastic processes (e.g., Markov Chains) and statistical methods.</div>
                         <div class="overview">Implementation: Developed in Python.</div>
                     </li>
                     <li>
-                        <strong class="subtitle">Automated Visualization Tool for Acoustic Signal Processing (Internal Tool)</strong>
+                        <strong>Automated Visualization Tool for Acoustic Signal Processing (Internal Tool)</strong>
                         <div class="overview">Overview: A tool for batch processing and automated visualization of acoustic data analysis results (FFT, PSD, Wavelet Transform), enhancing research and development efficiency.</div>
                     </li>
                 </ul>
@@ -517,11 +535,11 @@
                 <h3>◾️Music Activities & Works</h3>
                 <ul>
                     <li>
-                        <strong class="subtitle">Snare Solo / Snare × Piano (Instagram)</strong>
+                        <strong>Snare Solo / Snare × Piano (Instagram)</strong>
                         <div class="overview">Overview: Solo performances on custom RYU Percussion snare drums and collaborative works with piano.</div>
                     </li>
                     <li>
-                        <strong class="subtitle">Solo Works</strong>
+                        <strong>Solo Works</strong>
                         <div class="overview">Overview: A collection of works, including solos and concertos for snare drum, exploring its full potential, including those composed using mathematical methods.</div>
                     </li>
                 </ul>
@@ -561,9 +579,7 @@
                     </li>
                 </ul>
 
-            </div> <!-- /lang-en -->
-
-        </section>
+            </div> </section>
     </div>
 
 </body>
