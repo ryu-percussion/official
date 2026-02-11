@@ -8,7 +8,7 @@
     
     <style>
         /* Github Pages "Minimal" Theme (orderedlist) Recreation 
-           Based on the design of https://motimotipurinn.github.io/
+           Ref: https://motimotipurinn.github.io/
         */
 
         /* Base Styles */
@@ -19,12 +19,14 @@
             color: #333;
             font-weight: 400;
             margin: 0;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Typography */
         h1, h2, h3, h4, h5, h6 {
             color: #222;
             margin: 0 0 20px;
+            font-weight: bold;
         }
 
         p, ul, ol, table, pre, dl {
@@ -40,8 +42,9 @@
         h3, h4, h5, h6 { color: #494949; }
 
         a {
-            color: #4183C4; /* The specific blue used in the theme */
+            color: #4183C4; /* Theme Blue */
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         a:hover {
@@ -52,20 +55,17 @@
         .wrapper {
             width: 860px;
             margin: 0 auto;
+            display: flex; /* Flexbox for Sticky Layout */
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        /* Sidebar (Left, 270px wide - tweaked to match visual weight) */
+        /* Sidebar (Left, 270px wide) - Fixed/Sticky */
         header {
             width: 270px;
-            float: left;
-            position: fixed; /* Keeps sidebar fixed on desktop if desired, or standard float */
-        }
-        /* Note: Original 'Minimal' theme often floats without fixed position, 
-           but 'orderedlist' theme usually has a distinct left column. 
-           We will use float to match the standard behavior. */
-        header {
-            position: static; /* Resetting to standard flow for better content matching */
-            float: left;
+            position: sticky; /* スクロール時に固定 */
+            top: 50px; /* 固定位置 */
+            height: fit-content;
         }
 
         header ul {
@@ -78,34 +78,36 @@
         }
 
         header h1 {
-            width: 270px; /* constraining width */
-            font-size: 24px; /* Slightly smaller for sidebar title */
+            width: 270px;
+            font-size: 24px;
             line-height: 1.5;
             margin-bottom: 10px;
+            margin-top: 0;
         }
 
         header p {
-            font-size: 13px; /* Caption text size */
+            font-size: 13px;
             color: #777;
         }
 
         /* Sidebar Image */
         header img {
-            width: 100%; /* Fits the 270px width */
-            border-radius: 4px; /* Slight radius */
+            width: 100%;
+            border-radius: 5px;
             margin-bottom: 10px;
+            display: block;
         }
 
         /* Icon Container */
         .social-icons {
-            margin-top: 10px;
+            margin-top: 20px;
             margin-bottom: 15px;
             font-size: 20px;
         }
         .social-icons a {
             color: #494949;
             margin-right: 15px;
-            transition: color 0.2s;
+            text-decoration: none;
         }
         .social-icons a:hover {
             color: #4183C4;
@@ -122,18 +124,17 @@
             margin-bottom: 0;
         }
 
-        /* Main Content (Right, 500px wide) */
+        /* Main Content (Right, 500px wide) - Scrollable */
         section {
             width: 500px;
-            float: right;
+            /* float removed due to flexbox */
             padding-bottom: 50px;
         }
 
         section h1 {
-            font-size: 32px; /* Main title larger */
+            font-size: 32px;
             font-weight: bold;
             letter-spacing: -1px;
-            border-bottom: 1px solid #eee; /* No border on h1 in some variants, but h2 yes. */
             border: none; 
             margin-bottom: 30px;
         }
@@ -176,7 +177,7 @@
             color: #666;
             margin-top: 2px;
             margin-bottom: 8px;
-            padding-left: 0; /* Align with bullet text */
+            padding-left: 0;
         }
 
         strong {
@@ -189,24 +190,46 @@
             margin-right: 10px;
         }
 
-        /* Language Toggle - Positioned cleanly */
+        /* Iconic Language Toggle Buttons */
         .lang-toggle {
-            text-align: right;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px; /* カプセル型 */
+            color: #999;
             font-size: 12px;
-            color: #999;
-        }
-        .lang-toggle a {
-            cursor: pointer;
-            margin-left: 10px;
-            color: #999;
-        }
-        .lang-toggle a.active {
-            color: #4183C4;
             font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fff;
+            text-decoration: none; /* remove link underline */
         }
-        .lang-toggle a:hover {
+        
+        .lang-btn:hover {
+            border-color: #4183C4;
             color: #4183C4;
+            text-decoration: none;
+        }
+
+        .lang-btn.active {
+            background-color: #4183C4;
+            color: #fff;
+            border-color: #4183C4;
+            box-shadow: 0 2px 5px rgba(65, 131, 196, 0.3);
+        }
+
+        .lang-btn i {
+            margin-right: 6px;
+            font-size: 14px;
         }
 
         /* Responsive Design */
@@ -217,11 +240,12 @@
             .wrapper {
                 width: auto;
                 margin: 0;
+                display: block; /* Disable flex on mobile */
             }
             header, section {
-                float: none;
-                position: static;
                 width: auto;
+                float: none;
+                position: static; /* Reset sticky */
             }
             header {
                 padding-right: 0;
@@ -236,7 +260,10 @@
                 width: auto;
             }
             header img {
-                max-width: 200px; /* Limit image size on mobile */
+                max-width: 200px;
+            }
+            .lang-toggle {
+                justify-content: flex-start; /* Left align on mobile */
             }
         }
     </style>
@@ -256,8 +283,8 @@
             var selectedIcon = document.getElementById('lang-' + lang + '-icon');
             if (selectedIcon) selectedIcon.style.display = 'block';
 
-            // トグルボタンのスタイル更新
-            document.querySelectorAll('.lang-toggle a').forEach(a => a.classList.remove('active'));
+            // ボタンのスタイル更新
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + lang).classList.add('active');
         }
     </script>
@@ -266,7 +293,7 @@
 
     <div class="wrapper">
         <header>
-            <img src="profile..jpg" alt="Ryunosuke Takada" onerror="this.src='https://via.placeholder.com/270x270?text=Photo'">
+            <img src="profile.jpg" alt="Ryunosuke Takada" onerror="this.src='https://via.placeholder.com/270x270?text=Ryunosuke'">
             
             <h1>@ryu_percussion</h1>
             
@@ -294,8 +321,12 @@
         <section>
             
             <div class="lang-toggle">
-                <a onclick="switchLang('jp')" id="btn-jp" class="active">日本語</a> / 
-                <a onclick="switchLang('en')" id="btn-en">English</a>
+                <a onclick="switchLang('jp')" id="btn-jp" class="lang-btn active">
+                    <i class="fas fa-check"></i> 日本語
+                </a>
+                <a onclick="switchLang('en')" id="btn-en" class="lang-btn">
+                    <i class="fas fa-globe"></i> English
+                </a>
             </div>
 
             <div id="lang-jp" class="lang-content">
@@ -438,7 +469,9 @@
                     </li>
                 </ul>
 
-            </div> <div id="lang-en" class="lang-content" style="display:none;">
+            </div> 
+            
+            <div id="lang-en" class="lang-content" style="display:none;">
 
                 <h1>Ryunosuke Takada</h1>
 
@@ -579,7 +612,8 @@
                     </li>
                 </ul>
 
-            </div> </section>
+            </div> 
+        </section>
     </div>
 
 </body>
