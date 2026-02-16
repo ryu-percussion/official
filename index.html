@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Serif+JP:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -43,7 +43,7 @@
             line-height: 2.2;
         }
 
-        /* Subtle animated noise/gradient background to mimic the reference */
+        /* Subtle animated noise/gradient background */
         body::before {
             content: "";
             position: fixed;
@@ -62,7 +62,7 @@
             pointer-events: none;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5 {
             font-family: var(--font-en);
             font-weight: 300;
             color: var(--accent);
@@ -187,6 +187,65 @@
             padding-bottom: 1rem;
         }
 
+        /* === Custom Styles for List/Markdown-like Content === */
+        .subsection-title {
+            font-size: 2rem; 
+            margin-bottom: 3rem; 
+            margin-top: 6rem;
+            border-bottom: 1px solid #222; 
+            padding-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .category-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .category-title {
+            font-family: var(--font-en); /* 英語フォントで統一感 */
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 0 0 0.8rem 0;
+            border-left: 2px solid #444;
+            padding-left: 1rem;
+            line-height: 1.2;
+        }
+        
+        /* 日本語カラム用のカテゴリタイトル調整 */
+        .col-ja .category-title {
+            font-family: var(--font-jp);
+            font-weight: 400;
+        }
+
+        .detail-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .detail-list li {
+            margin-bottom: 0.4rem;
+            padding-left: 1em;
+            text-indent: -1em;
+            color: var(--text-jp);
+        }
+
+        .col-en .detail-list li {
+            color: var(--text-en);
+        }
+
+        .detail-label {
+            color: #bbb;
+            font-weight: 400;
+            margin-right: 0.5em;
+        }
+        
+        .col-en .detail-label {
+            color: #777;
+            font-family: var(--font-en);
+            font-style: italic;
+        }
+
         /* === Image & Video Assets === */
         .hero-img {
             width: 100%;
@@ -306,164 +365,265 @@
                     Logic and Art, a longing for the Idea.
                 </div>
             </div>
-            <div class="reveal" style="margin-bottom: 8rem;">
+            <div class="reveal" style="margin-bottom: 2rem;">
                 <img src="pro.jpg" alt="RYU Profile" class="hero-img" onerror="this.src='https://via.placeholder.com/600x400/111/fff?text=Profile+Image'">
             </div>
 
-            <h3 class="section-title reveal" style="border: none; margin-bottom: 2rem; font-size: 2rem;">Skills</h3>
+            <h3 class="subsection-title reveal">Skills</h3>
             <div class="bilingual-row reveal">
                 <div class="col-ja">
-                    <strong>◾️数学 & 物理学</strong><br>
-                    研究基盤: 複素解析、トポロジー、解析的数論（ζ関数）<br>
-                    応用モデル: 確率過程（マルコフ連鎖、点過程）、群論、非ユークリッド幾何学<br>
-                    物理・音響: 音響物理学、振動・波動論、リズム生成の数理解析<br><br>
-
-                    <strong>◾️音楽 & 作曲</strong><br>
-                    演奏: ピアノ、スネアドラムソロ、パーカッション<br>
-                    理論・作曲: 数理的作曲（確率モデル・マルコフ連鎖・クセナキス的手法・音響的多元構造など）、編曲、サウンドデザイン、ポリリズム<br>
-                    応用: 楽器設計、音響解析、物理音響モデリング、音響工学<br><br>
-
-                    <strong>◾️プログラミング & AI</strong><br>
-                    使用言語: Python<br>
-                    信号処理: デジタル信号処理 (DSP)、高速フーリエ変換 (FFT)、パワースペクトル密度 (PSD)、ウェーブレット変換、ゼロ点分布解析<br>
-                    AI・機械学習: 深層学習（RNN, VAE, GANs）による作曲モデルの構築<br>
-                    システム開発: 確率的作曲システム、変拍子生成アルゴリズム、音響データ解析ツールの実装<br>
-                    Web・ソフトウェア基盤構築: インタラクティブUIを備えた研究用Webアプリケーション開発、再現性・保守性を考慮したコード設計<br><br>
-
-                    <strong>◾️デザイン & コミュニケーション</strong><br>
-                    ビジュアル: 油絵、グラフィックデザイン、数学的・音響的データのビジュアライゼーション<br>
-                    応用: 楽器デザイン、音響インスタレーション<br><br>
-
-                    <strong>◾️SNS運用 & マーケティング</strong><br>
-                    Instagram運用: AIによるデータ分析・戦略により運用半年でフォロワー1万人増、月間100万リーチ達成など<br>
-                    クリエイティブ制作: Davinci Resolve, Premiere Pro, Canvaほか<br><br>
-
-                    <strong>◾️言語</strong><br>
-                    ドイツ語、フランス語、英語、日本語、イタリア語、スペイン語
+                    <div class="category-block">
+                        <h4 class="category-title">数学 & 物理学</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">研究基盤:</span> 複素解析、トポロジー、解析的数論（ζ関数）</li>
+                            <li><span class="detail-label">応用モデル:</span> 確率過程（マルコフ連鎖、点過程）、群論、非ユークリッド幾何学</li>
+                            <li><span class="detail-label">物理・音響:</span> 音響物理学、振動・波動論、リズム生成の数理解析</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">音楽 & 作曲</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">演奏:</span> ピアノ、スネアドラムソロ、パーカッション</li>
+                            <li><span class="detail-label">理論・作曲:</span> 数理的作曲（確率モデル・マルコフ連鎖・クセナキス的手法・音響的多元構造など）、編曲、サウンドデザイン、ポリリズム</li>
+                            <li><span class="detail-label">応用:</span> 楽器設計、音響解析、物理音響モデリング、音響工学</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">プログラミング & AI</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">使用言語:</span> Python</li>
+                            <li><span class="detail-label">信号処理:</span> デジタル信号処理 (DSP)、FFT、PSD、ウェーブレット変換、ゼロ点分布解析</li>
+                            <li><span class="detail-label">AI・機械学習:</span> 深層学習（RNN, VAE, GANs）による作曲モデルの構築</li>
+                            <li><span class="detail-label">システム開発:</span> 確率的作曲システム、変拍子生成アルゴリズム、音響データ解析ツールの実装</li>
+                            <li><span class="detail-label">Web・ソフトウェア:</span> 研究用Webアプリ開発、再現性・保守性を考慮したコード設計</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">デザイン & コミュニケーション</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">ビジュアル:</span> 油絵、グラフィックデザイン、データのビジュアライゼーション</li>
+                            <li><span class="detail-label">応用:</span> 楽器デザイン、音響インスタレーション</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">SNS運用 & マーケティング</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Instagram運用:</span> AIデータ分析・戦略により半年でフォロワー1万人増、月間100万リーチ</li>
+                            <li><span class="detail-label">クリエイティブ:</span> Davinci Resolve, Premiere Pro, Canvaほか</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">言語</h4>
+                        <ul class="detail-list">
+                            <li>ドイツ語、フランス語、英語、日本語、イタリア語、スペイン語</li>
+                        </ul>
+                    </div>
                 </div>
+
                 <div class="col-en">
                     <span class="number">01</span>
-                    <strong>◾️Mathematics & Physics</strong><br>
-                    Research Foundations: Complex Analysis, Topology, Analytic Number Theory (Zeta Function)<br>
-                    Applied Models: Stochastic Processes (Markov Chains, Point Processes), Group Theory, Non-Euclidean Geometry<br>
-                    Physics & Acoustics: Acoustical Physics, Vibration & Wave Theory, Mathematical Analysis of Rhythm Generation<br><br>
-
-                    <strong>◾️Music & Composition</strong><br>
-                    Performance: Piano, Snare Drum Solo, Percussion<br>
-                    Theory & Composition: Mathematical Composition (Stochastic Models, Markov Chains, Xenakis-style methods, Acoustic Multi-structures, etc.), Arranging, Sound Design, Polyrhythm<br>
-                    Application: Instrument Design, Acoustic Analysis, Physical Acoustic Modeling, Acoustical Engineering<br><br>
-
-                    <strong>◾️Programming & AI</strong><br>
-                    Languages: Python<br>
-                    Signal Processing: Digital Signal Processing (DSP), FFT, PSD, Wavelet Transform, Zero Distribution Analysis<br>
-                    AI & ML: Construction of composition models via Deep Learning (RNN, VAE, GANs)<br>
-                    System Development: Stochastic Composition Systems, Odd Meter Generation Algorithms, Acoustic Data Analysis Tools<br>
-                    Web & Software: Interactive UI Web Applications for Research, Code Design for Reproducibility & Maintainability<br><br>
-
-                    <strong>◾️Design & Communication</strong><br>
-                    Visuals: Oil Painting, Graphic Design, Visualization of Mathematical/Acoustic Data<br>
-                    Application: Instrument Design, Sound Installation<br><br>
-
-                    <strong>◾️SNS & Marketing</strong><br>
-                    Instagram Operation: +10k followers in 6 months via AI data analysis/strategy, 1M monthly reach<br>
-                    Creative: Davinci Resolve, Premiere Pro, Canva, etc.<br><br>
-
-                    <strong>◾️Languages</strong><br>
-                    German, French, English, Japanese, Italian, Spanish
+                    <div class="category-block">
+                        <h4 class="category-title">Mathematics & Physics</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Research Foundations:</span> Complex Analysis, Topology, Analytic Number Theory (Zeta Function)</li>
+                            <li><span class="detail-label">Applied Models:</span> Stochastic Processes (Markov Chains, Point Processes), Group Theory, Non-Euclidean Geometry</li>
+                            <li><span class="detail-label">Physics & Acoustics:</span> Acoustical Physics, Vibration & Wave Theory, Mathematical Analysis of Rhythm Generation</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Music & Composition</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Performance:</span> Piano, Snare Drum Solo, Percussion</li>
+                            <li><span class="detail-label">Theory & Composition:</span> Mathematical Composition (Stochastic Models, Markov Chains, Xenakis-style methods, Acoustic Multi-structures), Arranging, Sound Design, Polyrhythm</li>
+                            <li><span class="detail-label">Application:</span> Instrument Design, Acoustic Analysis, Physical Acoustic Modeling, Acoustical Engineering</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Programming & AI</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Languages:</span> Python</li>
+                            <li><span class="detail-label">Signal Processing:</span> Digital Signal Processing (DSP), FFT, PSD, Wavelet Transform, Zero Distribution Analysis</li>
+                            <li><span class="detail-label">AI & ML:</span> Construction of composition models via Deep Learning (RNN, VAE, GANs)</li>
+                            <li><span class="detail-label">System Development:</span> Stochastic Composition Systems, Odd Meter Generation Algorithms, Acoustic Data Analysis Tools</li>
+                            <li><span class="detail-label">Web & Software:</span> Interactive UI Web Applications for Research, Code Design for Reproducibility & Maintainability</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Design & Communication</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Visuals:</span> Oil Painting, Graphic Design, Visualization of Mathematical/Acoustic Data</li>
+                            <li><span class="detail-label">Application:</span> Instrument Design, Sound Installation</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">SNS & Marketing</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Instagram Operation:</span> +10k followers in 6 months via AI data analysis/strategy, 1M monthly reach</li>
+                            <li><span class="detail-label">Creative:</span> Davinci Resolve, Premiere Pro, Canva, etc.</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Languages</h4>
+                        <ul class="detail-list">
+                            <li>German, French, English, Japanese, Italian, Spanish</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <h3 class="section-title reveal" style="border: none; margin-bottom: 2rem; font-size: 2rem;">Projects</h3>
+            <h3 class="subsection-title reveal">Projects</h3>
             <div class="bilingual-row reveal">
                 <div class="col-ja">
-                    <strong>◾️楽器デザイン</strong><br>
-                    RYU Percussion<br>
-                    概要: 音響物理学の知見に基づく楽器設計。設計、製作、演奏、ブランディング。<br>
-                    主な設計: Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…<br><br>
-
-                    <strong>◾️研究論文 & 執筆</strong><br>
-                    [研究論文] リーマンゼータ零点の多角的ソニフィケーション：相補的音響表現による数論的構造の知覚的解析 (2025)<br>
-                    概要: ゼータ関数の零点を、ソニフィケーションし、その知覚的有効性を評価する試み。<br>
-                    [研究論文] スネアドラムの構成要素がその音響特性に与える物理的影響の定量的評価 (2025)<br>
-                    概要: スネアドラムの主要要素がそのティンバーに与える影響を定量化。楽器設計理論の基盤。<br><br>
-
-                    <strong>◾️開発</strong><br>
-                    Mathematical Composition System (2024)<br>
-                    概要: 確率過程（マルコフ連鎖等）及び統計的手法を用いたリズム・音響生成システム。<br>
-                    実装: Pythonにて実装。<br>
-                    音響信号処理の自動可視化ツール (内部ツール)<br>
-                    概要: FFT、PSD、ウェーブレット変換など、音響データ解析の結果をバッチ処理で自動可視化するツール。研究・開発効率の向上に貢献。<br><br>
-
-                    <strong>◾️音楽活動、作品</strong><br>
-                    Snare Solo / Snare × Piano (Instagram)<br>
-                    概要: 自作スネアドラム（RYU Percussion）のソロ演奏および、スネアとピアノの演奏。<br>
-                    Solo Works<br>
-                    概要: スネアドラムソロやスネアコンチェルトなど。数理的手法に基づく作曲など。<br><br>
-
-                    <strong>◾️教育</strong><br>
-                    数学、音楽、芸術、プログラミングなどさまざまな分野を横断する、統合的教育モデルを構想。<br>
-                    STEM教育とギフテッド教育を融合させた多様で創造的な教育像を提案。
+                    <div class="category-block">
+                        <h4 class="category-title">楽器デザイン (Instruments design)</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">RYU Percussion:</span> 音響物理学の知見に基づく楽器設計。設計、製作、演奏、ブランディング。</li>
+                            <li><span class="detail-label">主な設計:</span> Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">研究論文 & 執筆 (Publications & Writing)</h4>
+                        <ul class="detail-list">
+                            <li>
+                                <span class="detail-label">研究論文:</span> <strong>リーマンゼータ零点の多角的ソニフィケーション：相補的音響表現による数論的構造の知覚的解析 (2025)</strong><br>
+                                概要: ゼータ関数の零点を、ソニフィケーションし、その知覚的有効性を評価する試み。
+                            </li>
+                            <li style="margin-top:0.5rem;">
+                                <span class="detail-label">研究論文:</span> <strong>スネアドラムの構成要素がその音響特性に与える物理的影響の定量的評価 (2025)</strong><br>
+                                概要: スネアドラムの主要要素がそのティンバーに与える影響を定量化。楽器設計理論の基盤。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">開発 (Software & Systems)</h4>
+                        <ul class="detail-list">
+                            <li>
+                                <span class="detail-label">System:</span> <strong>Mathematical Composition System (2024)</strong><br>
+                                確率過程（マルコフ連鎖等）及び統計的手法を用いたリズム・音響生成システム。Pythonにて実装。
+                            </li>
+                            <li style="margin-top:0.5rem;">
+                                <span class="detail-label">Tool:</span> <strong>音響信号処理の自動可視化ツール (内部ツール)</strong><br>
+                                FFT、PSD、ウェーブレット変換など、音響データ解析の結果をバッチ処理で自動可視化。研究・開発効率の向上に貢献。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">音楽活動、作品 (Art Works & Performances)</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Snare Solo / Snare × Piano (Instagram):</span> 自作スネアドラム（RYU Percussion）のソロ演奏および、スネアとピアノの演奏。</li>
+                            <li><span class="detail-label">Solo Works:</span> スネアドラムソロやスネアコンチェルトなど。数理的手法に基づく作曲。</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">教育 (Education)</h4>
+                        <ul class="detail-list">
+                            <li>数学、音楽、芸術、プログラミングなどさまざまな分野を横断する、統合的教育モデルを構想。</li>
+                            <li>STEM教育とギフテッド教育を融合させた多様で創造的な教育像を提案。</li>
+                        </ul>
+                    </div>
                 </div>
+
                 <div class="col-en">
                     <span class="number">02</span>
-                    <strong>◾️Instrument Design</strong><br>
-                    RYU Percussion<br>
-                    Overview: Instrument design based on acoustical physics insights. Design, fabrication, performance, branding.<br>
-                    Main Designs: Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…<br><br>
-
-                    <strong>◾️Publications & Writing</strong><br>
-                    [Research Paper] Multilateral Sonification of Riemann Zeta Zeros: Perceptual Analysis of Number Theoretic Structures via Complementary Acoustic Representations (2025)<br>
-                    Overview: An attempt to sonify Zeta function zeros and evaluate their perceptual effectiveness.<br>
-                    [Research Paper] Quantitative Evaluation of Physical Impacts of Constituent Components on Snare Drum Acoustics (2025)<br>
-                    Overview: Quantifying the impact of snare elements on timbre. Foundation of instrument design theory.<br><br>
-
-                    <strong>◾️Software & Systems</strong><br>
-                    Mathematical Composition System (2024)<br>
-                    Overview: Rhythm/Sound generation system using stochastic processes (Markov chains, etc.) and statistical methods.<br>
-                    Implementation: Python.<br>
-                    Automated Acoustic Signal Processing Visualization Tool (Internal)<br>
-                    Overview: Batch processing tool for automated visualization of acoustic data analysis (FFT, PSD, Wavelet, etc.). Contributes to research efficiency.<br><br>
-
-                    <strong>◾️Art Works & Performances</strong><br>
-                    Snare Solo / Snare × Piano (Instagram)<br>
-                    Overview: Solo performance with self-made snare (RYU Percussion) and Snare/Piano duos.<br>
-                    Solo Works<br>
-                    Overview: Snare solos, snare concertos. Composition based on mathematical methods.<br><br>
-
-                    <strong>◾️Education</strong><br>
-                    Conceiving an integrated educational model crossing Mathematics, Music, Art, Programming, and various fields.<br>
-                    Proposing a diverse and creative vision of education fusing STEM and Gifted education.
+                    <div class="category-block">
+                        <h4 class="category-title">Instrument Design</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">RYU Percussion:</span> Instrument design based on acoustical physics insights. Design, fabrication, performance, branding.</li>
+                            <li><span class="detail-label">Main Designs:</span> Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Publications & Writing</h4>
+                        <ul class="detail-list">
+                            <li>
+                                <span class="detail-label">Research Paper:</span> <strong>Multilateral Sonification of Riemann Zeta Zeros (2025)</strong><br>
+                                Perceptual Analysis of Number Theoretic Structures via Complementary Acoustic Representations.
+                            </li>
+                            <li style="margin-top:0.5rem;">
+                                <span class="detail-label">Research Paper:</span> <strong>Quantitative Evaluation of Physical Impacts of Constituent Components on Snare Drum Acoustics (2025)</strong><br>
+                                Quantifying the impact of snare elements on timbre. Foundation of instrument design theory.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Software & Systems</h4>
+                        <ul class="detail-list">
+                            <li>
+                                <span class="detail-label">System:</span> <strong>Mathematical Composition System (2024)</strong><br>
+                                Rhythm/Sound generation system using stochastic processes (Markov chains, etc.) and statistical methods.
+                            </li>
+                            <li style="margin-top:0.5rem;">
+                                <span class="detail-label">Tool:</span> <strong>Automated Acoustic Signal Processing Visualization Tool</strong><br>
+                                Batch processing tool for automated visualization of acoustic data analysis (FFT, PSD, Wavelet, etc.).
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Art Works & Performances</h4>
+                        <ul class="detail-list">
+                            <li><span class="detail-label">Snare Solo / Snare × Piano:</span> Solo performance with self-made snare (RYU Percussion) and Snare/Piano duos.</li>
+                            <li><span class="detail-label">Solo Works:</span> Snare solos, snare concertos. Composition based on mathematical methods.</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Education</h4>
+                        <ul class="detail-list">
+                            <li>Conceiving an integrated educational model crossing Mathematics, Music, Art, Programming, and various fields.</li>
+                            <li>Proposing a diverse and creative vision of education fusing STEM and Gifted education.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <h3 class="section-title reveal" style="border: none; margin-bottom: 2rem; font-size: 2rem;">Core Research Themes</h3>
+            <h3 class="subsection-title reveal">Core Research Themes</h3>
             <div class="bilingual-row reveal">
                 <div class="col-ja">
-                    <strong>◾️解析的数論のソニフィケーション</strong><br>
-                    リーマンゼータ関数の零点分布や素数分布といった数論的構造と、音響パラメータ（周波数、リズム、音色）との構造的対応を研究。<br>
-                    ソニフィケーションによって、数理的概念と聴覚的情報を対応させ、数理構造の知覚に新たなアプローチを見出す。<br><br>
-
-                    <strong>◾️アルゴリズミック作曲と数理モデル</strong><br>
-                    クセナキス（Iannis Xenakis）の確率論的手法（Stochastic Music）、マルコフ連鎖、群論、非ユークリッド幾何学などの数理モデルを用いた作曲アルゴリズムを構築。<br>
-                    ポリリズムとその知覚構造の対応。<br><br>
-
-                    <strong>◾️音響物理学と楽器設計への応用</strong><br>
-                    スネアドラム等の打楽器が発する音響の物理的特性（振動モード、減衰率、周波数特性）を、実験とシミュレーション（物理音響モデリング）によって定量的・数理的に評価。<br>
-                    この知見を楽器設計に直接フィードバックし、音響特性を意図的にデザイン。
+                    <div class="category-block">
+                        <h4 class="category-title">解析的数論のソニフィケーション</h4>
+                        <ul class="detail-list">
+                            <li>リーマンゼータ関数の零点分布や素数分布といった数論的構造と、音響パラメータ（周波数、リズム、音色）との構造的対応を研究。</li>
+                            <li>ソニフィケーションによって、数理的概念と聴覚的情報を対応させ、数理構造の知覚に新たなアプローチを見出す。</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">アルゴリズミック作曲と数理モデル</h4>
+                        <ul class="detail-list">
+                            <li>クセナキス（Iannis Xenakis）の確率論的手法（Stochastic Music）、マルコフ連鎖、群論、非ユークリッド幾何学などの数理モデルを用いた作曲アルゴリズムを構築。</li>
+                            <li>ポリリズムとその知覚構造の対応。</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">音響物理学と楽器設計への応用</h4>
+                        <ul class="detail-list">
+                            <li>スネアドラム等の打楽器が発する音響の物理的特性（振動モード、減衰率、周波数特性）を、実験とシミュレーション（物理音響モデリング）によって定量的・数理的に評価。</li>
+                            <li>この知見を楽器設計に直接フィードバックし、音響特性を意図的にデザイン。</li>
+                        </ul>
+                    </div>
                 </div>
+
                 <div class="col-en">
                     <span class="number">03</span>
-                    <strong>◾️Sonification of Analytic Number Theory</strong><br>
-                    Researching the structural correspondence between number theoretic structures (such as Riemann Zeta zero distribution and prime distribution) and acoustic parameters (frequency, rhythm, timbre).<br>
-                    Finding new approaches to perceive mathematical structures by mapping mathematical concepts to auditory information via sonification.<br><br>
-
-                    <strong>◾️Algorithmic Composition & Mathematical Models</strong><br>
-                    Constructing composition algorithms using mathematical models such as Iannis Xenakis's Stochastic Music, Markov Chains, Group Theory, and Non-Euclidean Geometry.<br>
-                    Correspondence between polyrhythms and perceptual structures.<br><br>
-
-                    <strong>◾️Acoustical Physics & Application to Instrument Design</strong><br>
-                    Quantitative and mathematical evaluation of acoustic physical characteristics (vibration modes, decay rates, frequency response) of percussion instruments like snare drums via experiments and simulation (physical acoustic modeling).<br>
-                    Directly feeding this knowledge back into instrument design to intentionally design acoustic characteristics.
+                    <div class="category-block">
+                        <h4 class="category-title">Sonification of Analytic Number Theory</h4>
+                        <ul class="detail-list">
+                            <li>Researching the structural correspondence between number theoretic structures (such as Riemann Zeta zero distribution) and acoustic parameters.</li>
+                            <li>Finding new approaches to perceive mathematical structures by mapping mathematical concepts to auditory information via sonification.</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Algorithmic Composition & Mathematical Models</h4>
+                        <ul class="detail-list">
+                            <li>Constructing composition algorithms using mathematical models such as Iannis Xenakis's Stochastic Music, Markov Chains, Group Theory, and Non-Euclidean Geometry.</li>
+                            <li>Correspondence between polyrhythms and perceptual structures.</li>
+                        </ul>
+                    </div>
+                    <div class="category-block">
+                        <h4 class="category-title">Acoustical Physics & Application to Instrument Design</h4>
+                        <ul class="detail-list">
+                            <li>Quantitative evaluation of acoustic physical characteristics of percussion instruments via experiments and simulation (physical acoustic modeling).</li>
+                            <li>Directly feeding this knowledge back into instrument design to intentionally design acoustic characteristics.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
