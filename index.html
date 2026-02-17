@@ -1,966 +1,638 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RYU - Portfolio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Serif+JP:wght@200;300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$']],
-                displayMath: [['$$', '$$']]
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYU Percussion</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* === Variables & Base Styles === */
-        :root {
-            --bg-color: #030303;
-            --text-jp: #dcdcdc;
-            --text-en: #888888;
-            --accent: #ffffff;
-            --nav-width: 250px;
-            --font-jp: 'Noto Serif JP', serif;
-            --font-en: 'Cormorant Garamond', serif;
-        }
+```
+<style>
+    /* Github Pages "Minimal" Theme (orderedlist) Recreation
+       Ref: <https://motimotipurinn.github.io/>
+    */
 
+    /* Base Styles */
+    body {
+        background-color: #fff;
+        padding: 50px;
+        font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #333;
+        font-weight: 400;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+        color: #222;
+        margin: 0 0 20px;
+        font-weight: bold;
+    }
+
+    p, ul, ol, table, pre, dl {
+        margin: 0 0 20px;
+    }
+
+    h1, h2, h3 {
+        line-height: 1.1;
+    }
+
+    h1 { font-size: 28px; }
+    h2 { color: #393939; }
+    h3, h4, h5, h6 { color: #494949; }
+
+    a {
+        color: #4183C4; /* Theme Blue */
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Layout Wrapper (Width 860px centered) */
+    .wrapper {
+        width: 860px;
+        margin: 0 auto;
+        display: flex; /* Flexbox for Sticky Layout */
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    /* Sidebar (Left, 270px wide) - Fixed/Sticky */
+    header {
+        width: 270px;
+        position: sticky; /* スクロール時に固定 */
+        top: 50px; /* 固定位置 */
+        height: fit-content;
+    }
+
+    header ul {
+        list-style: none;
+        height: 40px;
+        padding: 0;
+        background: #eee;
+        border-radius: 5px;
+        width: 270px;
+    }
+
+    header h1 {
+        width: 270px;
+        font-size: 24px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+
+    header p {
+        font-size: 13px;
+        color: #777;
+    }
+
+    /* Sidebar Image */
+    header img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    /* Icon Container */
+    .social-icons {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    .social-icons a {
+        color: #494949;
+        margin-right: 15px;
+        text-decoration: none;
+    }
+    .social-icons a:hover {
+        color: #4183C4;
+    }
+
+    /* Sidebar Footer */
+    header .footer {
+        margin-top: 40px;
+        font-size: 11px;
+        color: #999;
+    }
+
+    header .footer p {
+        margin-bottom: 0;
+    }
+
+    /* Main Content (Right, 500px wide) - Scrollable */
+    section {
+        width: 500px;
+        /* float removed due to flexbox */
+        padding-bottom: 50px;
+    }
+
+    section h1 {
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        border: none;
+        margin-bottom: 30px;
+    }
+
+    /* Section Headers with Underline */
+    section h2 {
+        font-size: 22px;
+        font-weight: bold;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    section h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    /* List Styles */
+    section ul {
+        padding-left: 20px;
+        list-style-type: disc;
+    }
+
+    section ul ul {
+        margin-bottom: 0;
+    }
+
+    section li {
+        margin-bottom: 5px;
+        line-height: 1.6;
+    }
+
+    /* Custom Classes */
+    .overview {
+        font-size: 13px;
+        color: #666;
+        margin-top: 2px;
+        margin-bottom: 8px;
+        padding-left: 0;
+    }
+
+    strong {
+        font-weight: bold;
+        color: #222;
+    }
+
+    .year {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* Iconic Language Toggle Buttons */
+    .lang-toggle {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .lang-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 16px;
+        border: 1px solid #e0e0e0;
+        border-radius: 20px; /* カプセル型 */
+        color: #999;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #fff;
+        text-decoration: none; /* remove link underline */
+    }
+
+    .lang-btn:hover {
+        border-color: #4183C4;
+        color: #4183C4;
+        text-decoration: none;
+    }
+
+    .lang-btn.active {
+        background-color: #4183C4;
+        color: #fff;
+        border-color: #4183C4;
+        box-shadow: 0 2px 5px rgba(65, 131, 196, 0.3);
+    }
+
+    .lang-btn i {
+        margin-right: 6px;
+        font-size: 14px;
+    }
+
+    /* Responsive Design */
+    @media print, screen and (max-width: 960px) {
         body {
-            background-color: var(--bg-color);
-            color: var(--text-jp);
+            padding: 20px;
+        }
+        .wrapper {
+            width: auto;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            line-height: 2.2;
+            display: block; /* Disable flex on mobile */
         }
+        header, section {
+            width: auto;
+            float: none;
+            position: static; /* Reset sticky */
+        }
+        header {
+            padding-right: 0;
+            margin-bottom: 40px;
+        }
+        section {
+            border: 1px solid #eee;
+            border-width: 1px 0 0 0;
+            padding-top: 40px;
+        }
+        header h1 {
+            width: auto;
+        }
+        header img {
+            max-width: 200px;
+        }
+        .lang-toggle {
+            justify-content: flex-start; /* Left align on mobile */
+        }
+    }
+</style>
 
-        /* Subtle animated noise/gradient background */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at 50% 50%, rgba(20, 20, 25, 0.4) 0%, rgba(0, 0, 0, 1) 100%);
-            z-index: -2;
-        }
-        
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-            opacity: 0.03;
-            z-index: -1;
-            pointer-events: none;
-        }
+<script>
+    function switchLang(lang) {
+        // コンテンツの切り替え
+        document.querySelectorAll('.lang-content').forEach(function(content) {
+            content.style.display = 'none';
+        });
+        document.getElementById('lang-' + lang).style.display = 'block';
 
-        h1, h2, h3, h4, h5 {
-            font-family: var(--font-en);
-            font-weight: 300;
-            color: var(--accent);
-            letter-spacing: 0.1em;
-        }
+        // アイコンキャプションの切り替え
+        document.querySelectorAll('.lang-content-icon').forEach(function(icon) {
+            icon.style.display = 'none';
+        });
+        var selectedIcon = document.getElementById('lang-' + lang + '-icon');
+        if (selectedIcon) selectedIcon.style.display = 'block';
 
-        a {
-            color: var(--text-jp);
-            text-decoration: none;
-            transition: opacity 0.4s ease;
-        }
+        // ボタンのスタイル更新
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('btn-' + lang).classList.add('active');
+    }
+</script>
+```
 
-        a:hover {
-            opacity: 0.5;
-        }
-
-        /* === Navigation === */
-        nav {
-            width: var(--nav-width);
-            position: fixed;
-            height: 100vh;
-            padding: 60px 40px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            z-index: 100;
-        }
-
-        nav h1 {
-            font-size: 1.5rem;
-            margin-bottom: 4rem;
-            letter-spacing: 0.2em;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin-bottom: 1.2rem;
-        }
-
-        nav ul li a {
-            font-family: var(--font-en);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            color: #666;
-            transition: color 0.4s ease, padding-left 0.4s ease;
-        }
-
-        nav ul li a.active, nav ul li a:hover {
-            color: var(--accent);
-            padding-left: 10px;
-        }
-
-        /* === Main Content === */
-        main {
-            margin-left: var(--nav-width);
-            padding: 80px 8vw 150px 4vw;
-            box-sizing: border-box;
-            min-height: 100vh;
-        }
-
-        .page-section {
-            display: none;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* === Bilingual Layout (The Core Aesthetic) === */
-        .bilingual-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6vw;
-            margin-bottom: 8rem;
-            position: relative;
-        }
-
-        .col-ja {
-            font-family: var(--font-jp);
-            font-weight: 300;
-            text-align: justify;
-        }
-
-        .col-en {
-            font-family: var(--font-en);
-            font-size: 1.1rem;
-            color: var(--text-en);
-            text-align: justify;
-            position: relative;
-            padding-top: 3rem; /* Space for the number */
-        }
-
-        .number {
-            font-family: var(--font-en);
-            font-size: 1.2rem;
-            color: #555;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
-            width: 40px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-            border-bottom: 1px solid #222;
-            padding-bottom: 1rem;
-        }
-
-        /* === Custom Styles for List/Markdown-like Content === */
-        .subsection-title {
-            font-size: 2rem; 
-            margin-bottom: 3rem; 
-            margin-top: 6rem;
-            border-bottom: 1px solid #222; 
-            padding-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        .category-block {
-            margin-bottom: 2.5rem;
-        }
-
-        .category-title {
-            font-family: var(--font-en); /* 英語フォントで統一感 */
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin: 0 0 0.8rem 0;
-            border-left: 2px solid #444;
-            padding-left: 1rem;
-            line-height: 1.2;
-        }
-        
-        /* 日本語カラム用のカテゴリタイトル調整 */
-        .col-ja .category-title {
-            font-family: var(--font-jp);
-            font-weight: 400;
-        }
-
-        .detail-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .detail-list li {
-            margin-bottom: 0.4rem;
-            padding-left: 1em;
-            text-indent: -1em;
-            color: var(--text-jp);
-        }
-
-        .col-en .detail-list li {
-            color: var(--text-en);
-        }
-
-        .detail-label {
-            color: #bbb;
-            font-weight: 400;
-            margin-right: 0.5em;
-        }
-        
-        .col-en .detail-label {
-            color: #777;
-            font-family: var(--font-en);
-            font-style: italic;
-        }
-
-        /* === Image & Video Assets === */
-        .hero-img {
-            width: 100%;
-            max-width: 600px;
-            filter: grayscale(100%) contrast(1.2);
-            margin-top: 2rem;
-        }
-
-        .asset-img {
-            width: 100%;
-            margin-bottom: 2rem;
-            filter: grayscale(80%);
-            transition: filter 0.8s ease;
-        }
-        
-        .asset-img:hover {
-            filter: grayscale(0%);
-        }
-
-        /* Vertical Video Grid (9:16) */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2vw;
-            margin-top: 4rem;
-        }
-
-        .video-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .video-wrapper {
-            aspect-ratio: 9 / 16;
-            background: #111;
-            overflow: hidden;
-            border: 1px solid #222;
-        }
-
-        .video-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(50%);
-            transition: filter 0.5s ease;
-        }
-
-        .video-wrapper video:hover {
-            filter: grayscale(0%);
-        }
-
-        .video-title {
-            font-family: var(--font-en);
-            color: #888;
-            margin-top: 1rem;
-            font-style: italic;
-            text-align: center;
-        }
-
-        /* === Scroll Reveal Animation === */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 1024px) {
-            .bilingual-row {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .col-en { padding-top: 1rem; }
-            .number { position: static; display: block; margin-bottom: 1rem; }
-            nav { width: 100%; height: auto; position: relative; padding: 20px; border-bottom: 1px solid #222; }
-            main { margin-left: 0; padding: 40px 20px; }
-            .video-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .video-grid { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
 
-    <nav>
-        <h1>RYU</h1>
-        <ul>
-            <li><a onclick="showPage('home')" id="link-home" class="active">Home</a></li>
-            <li><a onclick="showPage('about')" id="link-about">About</a></li>
-            <li><a onclick="showPage('academics')" id="link-academics">Academics</a></li>
-            <li><a onclick="showPage('art')" id="link-art">Art</a></li>
-            <li><a onclick="showPage('music')" id="link-music">Music</a></li>
-            <li><a onclick="showPage('instruments')" id="link-instruments">Instruments</a></li>
-            <li><a onclick="showPage('archive')" id="link-archive">Archive</a></li>
-            <li><a onclick="showPage('contact')" id="link-contact">Contact</a></li>
-        </ul>
-    </nav>
+```
+<div class="wrapper">
+    <header>
+        <img src="pro.jpg" alt="RYU" onerror="this.src='<https://via.placeholder.com/270x270?text=Ryunosuke>'">
 
-    <main>
-        <section id="home" class="page-section active">
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    数理と音響，知覚の越境<br>
-                    抽象と物質<br>
-                    論理と芸術，イデアへの憧憬
-                </div>
-                <div class="col-en">
-                    <span class="number">00</span>
-                    Crossing the boundaries of mathematics, acoustics, and perception.<br>
-                    Abstraction and Matter.<br>
-                    Logic and Art, a longing for the Idea.
-                </div>
-            </div>
-            <div class="reveal" style="margin-bottom: 2rem;">
-                <img src="prof.jpg" alt="RYU Profile" class="hero-img" onerror="this.src='https://via.placeholder.com/600x400/111/fff?text=Profile+Image'">
-            </div>
+        <h1>@ryu_percussion</h1>
 
-            <h3 class="subsection-title reveal">Skills</h3>
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <div class="category-block">
-                        <h4 class="category-title">数学 & 物理学</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">研究基盤:</span> 複素解析、トポロジー、解析的数論（ζ関数）</li>
-                            <li><span class="detail-label">応用モデル:</span> 確率過程（マルコフ連鎖、点過程）、群論、非ユークリッド幾何学</li>
-                            <li><span class="detail-label">物理・音響:</span> 音響物理学、振動・波動論、リズム生成の数理解析</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">音楽 & 作曲</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">演奏:</span> ピアノ、スネアドラムソロ、パーカッション</li>
-                            <li><span class="detail-label">理論・作曲:</span> 数理的作曲（確率モデル・マルコフ連鎖・クセナキス的手法・音響的多元構造など）、編曲、サウンドデザイン、ポリリズム</li>
-                            <li><span class="detail-label">応用:</span> 楽器設計、音響解析、物理音響モデリング、音響工学</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">プログラミング & AI</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">使用言語:</span> Python</li>
-                            <li><span class="detail-label">信号処理:</span> デジタル信号処理 (DSP)、FFT、PSD、ウェーブレット変換、ゼロ点分布解析</li>
-                            <li><span class="detail-label">AI・機械学習:</span> 深層学習（RNN, VAE, GANs）による作曲モデルの構築</li>
-                            <li><span class="detail-label">システム開発:</span> 確率的作曲システム、変拍子生成アルゴリズム、音響データ解析ツールの実装</li>
-                            <li><span class="detail-label">Web・ソフトウェア:</span> 研究用Webアプリ開発、再現性・保守性を考慮したコード設計</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">デザイン & コミュニケーション</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">ビジュアル:</span> 油絵、グラフィックデザイン、データのビジュアライゼーション</li>
-                            <li><span class="detail-label">応用:</span> 楽器デザイン、音響インスタレーション</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">SNS運用 & マーケティング</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Instagram運用:</span> AIデータ分析・戦略により半年でフォロワー1万人増、月間100万リーチ</li>
-                            <li><span class="detail-label">クリエイティブ:</span> Davinci Resolve, Premiere Pro, Canvaほか</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">言語</h4>
-                        <ul class="detail-list">
-                            <li>ドイツ語、フランス語、英語、日本語、イタリア語、スペイン語</li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="social-icons">
+            <a href="mailto:ryu.percussion.contact@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="<https://www.instagram.com/ryu_percussion/>" target="_blank" rel="noopener noreferrer" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
 
-                <div class="col-en">
-                    <span class="number">01</span>
-                    <div class="category-block">
-                        <h4 class="category-title">Mathematics & Physics</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Research Foundations:</span> Complex Analysis, Topology, Analytic Number Theory (Zeta Function)</li>
-                            <li><span class="detail-label">Applied Models:</span> Stochastic Processes (Markov Chains, Point Processes), Group Theory, Non-Euclidean Geometry</li>
-                            <li><span class="detail-label">Physics & Acoustics:</span> Acoustical Physics, Vibration & Wave Theory, Mathematical Analysis of Rhythm Generation</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Music & Composition</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Performance:</span> Piano, Snare Drum Solo, Percussion</li>
-                            <li><span class="detail-label">Theory & Composition:</span> Mathematical Composition (Stochastic Models, Markov Chains, Xenakis-style methods, Acoustic Multi-structures), Arranging, Sound Design, Polyrhythm</li>
-                            <li><span class="detail-label">Application:</span> Instrument Design, Acoustic Analysis, Physical Acoustic Modeling, Acoustical Engineering</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Programming & AI</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Languages:</span> Python</li>
-                            <li><span class="detail-label">Signal Processing:</span> Digital Signal Processing (DSP), FFT, PSD, Wavelet Transform, Zero Distribution Analysis</li>
-                            <li><span class="detail-label">AI & ML:</span> Construction of composition models via Deep Learning (RNN, VAE, GANs)</li>
-                            <li><span class="detail-label">System Development:</span> Stochastic Composition Systems, Odd Meter Generation Algorithms, Acoustic Data Analysis Tools</li>
-                            <li><span class="detail-label">Web & Software:</span> Interactive UI Web Applications for Research, Code Design for Reproducibility & Maintainability</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Design & Communication</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Visuals:</span> Oil Painting, Graphic Design, Visualization of Mathematical/Acoustic Data</li>
-                            <li><span class="detail-label">Application:</span> Instrument Design, Sound Installation</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">SNS & Marketing</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Instagram Operation:</span> +10k followers in 6 months via AI data analysis/strategy, 1M monthly reach</li>
-                            <li><span class="detail-label">Creative:</span> Davinci Resolve, Premiere Pro, Canva, etc.</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Languages</h4>
-                        <ul class="detail-list">
-                            <li>German, French, English, Japanese, Italian, Spanish</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div id="lang-jp-icon" class="lang-content-icon">
+            <p>上記アイコンは僕の○-□のメガネがモチーフになっています。某経済学者の方と同じメーカーのもので、よく意識してるんですか？と聞かれますがただのCoincidenceです</p>
+        </div>
+        <div id="lang-en-icon" class="lang-content-icon" style="display: none;">
+            <p>The icon above is based on my ○-□ glasses.</p>
+        </div>
 
-            <h3 class="subsection-title reveal">Projects</h3>
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <div class="category-block">
-                        <h4 class="category-title">楽器デザイン</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">RYU Percussion:</span> 音響物理学の知見に基づく楽器設計。設計、製作、演奏、ブランディング。</li>
-                            <li><span class="detail-label">主な設計:</span> Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">研究論文 & 執筆</h4>
-                        <ul class="detail-list">
-                            <li>
-                                <span class="detail-label">研究論文:</span> <strong>リーマンゼータ零点の多角的ソニフィケーション：相補的音響表現による数論的構造の知覚的解析 (2025)</strong><br>
-                                概要: ゼータ関数の零点を、ソニフィケーションし、その知覚的有効性を評価する試み。
-                            </li>
-                            <li style="margin-top:0.5rem;">
-                                <span class="detail-label">研究論文:</span> <strong>スネアドラムの構成要素がその音響特性に与える物理的影響の定量的評価 (2025)</strong><br>
-                                概要: スネアドラムの主要要素がそのティンバーに与える影響を定量化。楽器設計理論の基盤。
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">開発</h4>
-                        <ul class="detail-list">
-                            <li>
-                                <span class="detail-label">System:</span> <strong>Mathematical Composition System (2024)</strong><br>
-                                確率過程（マルコフ連鎖等）及び統計的手法を用いたリズム・音響生成システム。Pythonにて実装。
-                            </li>
-                            <li style="margin-top:0.5rem;">
-                                <span class="detail-label">Tool:</span> <strong>音響信号処理の自動可視化ツール (内部ツール)</strong><br>
-                                FFT、PSD、ウェーブレット変換など、音響データ解析の結果をバッチ処理で自動可視化。研究・開発効率の向上に貢献。
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">音楽活動、作品</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Snare Solo / Snare × Piano (Instagram):</span> 自作スネアドラム（RYU Percussion）のソロ演奏および、スネアとピアノの演奏。</li>
-                            <li><span class="detail-label">Solo Works:</span> スネアドラムソロやスネアコンチェルトなど。数理的手法に基づく作曲。</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">教育</h4>
-                        <ul class="detail-list">
-                            <li>数学、音楽、芸術、プログラミングなどさまざまな分野を横断する、統合的教育モデルを構想。</li>
-                            <li>STEM教育とギフテッド教育を融合させた多様で創造的な教育像を提案。</li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="footer">
+            <p>Hosted on GitHub Pages — Theme by orderedlist</p>
+        </div>
+    </header>
 
-                <div class="col-en">
-                    <span class="number">02</span>
-                    <div class="category-block">
-                        <h4 class="category-title">Instrument Design</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">RYU Percussion:</span> Instrument design based on acoustical physics insights. Design, fabrication, performance, branding.</li>
-                            <li><span class="detail-label">Main Designs:</span> Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Publications & Writing</h4>
-                        <ul class="detail-list">
-                            <li>
-                                <span class="detail-label">Research Paper:</span> <strong>Multilateral Sonification of Riemann Zeta Zeros (2025)</strong><br>
-                                Perceptual Analysis of Number Theoretic Structures via Complementary Acoustic Representations.
-                            </li>
-                            <li style="margin-top:0.5rem;">
-                                <span class="detail-label">Research Paper:</span> <strong>Quantitative Evaluation of Physical Impacts of Constituent Components on Snare Drum Acoustics (2025)</strong><br>
-                                Quantifying the impact of snare elements on timbre. Foundation of instrument design theory.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Software & Systems</h4>
-                        <ul class="detail-list">
-                            <li>
-                                <span class="detail-label">System:</span> <strong>Mathematical Composition System (2024)</strong><br>
-                                Rhythm/Sound generation system using stochastic processes (Markov chains, etc.) and statistical methods.
-                            </li>
-                            <li style="margin-top:0.5rem;">
-                                <span class="detail-label">Tool:</span> <strong>Automated Acoustic Signal Processing Visualization Tool</strong><br>
-                                Batch processing tool for automated visualization of acoustic data analysis (FFT, PSD, Wavelet, etc.).
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Art Works & Performances</h4>
-                        <ul class="detail-list">
-                            <li><span class="detail-label">Snare Solo / Snare × Piano:</span> Solo performance with self-made snare (RYU Percussion) and Snare/Piano duos.</li>
-                            <li><span class="detail-label">Solo Works:</span> Snare solos, snare concertos. Composition based on mathematical methods.</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Education</h4>
-                        <ul class="detail-list">
-                            <li>Conceiving an integrated educational model crossing Mathematics, Music, Art, Programming, and various fields.</li>
-                            <li>Proposing a diverse and creative vision of education fusing STEM and Gifted education.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <section>
 
-            <h3 class="subsection-title reveal">Core Research Themes</h3>
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <div class="category-block">
-                        <h4 class="category-title">解析的数論のソニフィケーション</h4>
-                        <ul class="detail-list">
-                            <li>リーマンゼータ関数の零点分布や素数分布といった数論的構造と、音響パラメータ（周波数、リズム、音色）との構造的対応を研究。</li>
-                            <li>ソニフィケーションによって、数理的概念と聴覚的情報を対応させ、数理構造の知覚に新たなアプローチを見出す。</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">アルゴリズミック作曲と数理モデル</h4>
-                        <ul class="detail-list">
-                            <li>クセナキス（Iannis Xenakis）の確率論的手法（Stochastic Music）、マルコフ連鎖、群論、非ユークリッド幾何学などの数理モデルを用いた作曲アルゴリズムを構築。</li>
-                            <li>ポリリズムとその知覚構造の対応。</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">音響物理学と楽器設計への応用</h4>
-                        <ul class="detail-list">
-                            <li>スネアドラム等の打楽器が発する音響の物理的特性（振動モード、減衰率、周波数特性）を、実験とシミュレーション（物理音響モデリング）によって定量的・数理的に評価。</li>
-                            <li>この知見を楽器設計に直接フィードバックし、音響特性を意図的にデザイン。</li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="lang-toggle">
+            <a onclick="switchLang('jp')" id="btn-jp" class="lang-btn active">
+                <i class="fas fa-check"></i> 日本語
+            </a>
+            <a onclick="switchLang('en')" id="btn-en" class="lang-btn">
+                <i class="fas fa-globe"></i> English
+            </a>
+        </div>
 
-                <div class="col-en">
-                    <span class="number">03</span>
-                    <div class="category-block">
-                        <h4 class="category-title">Sonification of Analytic Number Theory</h4>
-                        <ul class="detail-list">
-                            <li>Researching the structural correspondence between number theoretic structures (such as Riemann Zeta zero distribution) and acoustic parameters.</li>
-                            <li>Finding new approaches to perceive mathematical structures by mapping mathematical concepts to auditory information via sonification.</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Algorithmic Composition & Mathematical Models</h4>
-                        <ul class="detail-list">
-                            <li>Constructing composition algorithms using mathematical models such as Iannis Xenakis's Stochastic Music, Markov Chains, Group Theory, and Non-Euclidean Geometry.</li>
-                            <li>Correspondence between polyrhythms and perceptual structures.</li>
-                        </ul>
-                    </div>
-                    <div class="category-block">
-                        <h4 class="category-title">Acoustical Physics & Application to Instrument Design</h4>
-                        <ul class="detail-list">
-                            <li>Quantitative evaluation of acoustic physical characteristics of percussion instruments via experiments and simulation (physical acoustic modeling).</li>
-                            <li>Directly feeding this knowledge back into instrument design to intentionally design acoustic characteristics.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div id="lang-jp" class="lang-content">
+            <h1>RYU</h1>
 
-        </section>
+            <h2>About Me</h2>
+            <p>
+                2007年生まれ.
+                幼少期より数学及び音楽（ピアノ、打楽器、作編曲）に強い興味を抱き、現在は両者の関係性に着目し、数的アルゴリズムによる作曲や、数学への聴覚的アプローチの導入など、両者を統合したインタラクティブな表現方法を追求.
+                また、自身の研究知見を楽器設計に応用し、デザイン、ブランディング、演奏までを一貫して行う。(イタリア国際打楽器コンクール最高位ほか)
+                そして、自身の経験から日本におけるギフテッド教育およびSTEAM教育にも注目し、学問や芸術の枠にとらわれない多様で創造的な教育像を模索.
+                関心領域は、物理学、トポロジー、楽器デザイン、AI、プログラミングから、油絵、デザイン、俳句、ルービックキューブなど.
+                学問・芸術・ものづくりの境界を越え、数理的思考と感性の調和から、新たな価値と表現のかたちの創造することが興味の中心.
+            </p>
+            <ul>
+                <li><strong>年齢：</strong>18歳</li>
+                <li><strong>学部：</strong>経済学部1年</li>
+                <li><strong>興味:</strong> 数理音楽学 / 数学 / 音楽 / 物理学 / アルゴリズミック作曲 / AI / プログラミング / 絵画 / デザイン / 俳句 / ルービックキューブ / ギフテッド教育 / STEM教育 / 機械学習 / 楽器設計 / SNS運用</li>
+                <li><strong>研究テーマ：</strong>数理音楽学 / アルゴリズミック作曲 / 音響物理学 / 解析的数論 / AI・機械学習 / ソニフィケーション / ζ関数 / 素数 / STEAM・ギフテッド教育</li>
+            </ul>
 
-        <section id="about" class="page-section">
-            <h2 class="section-title reveal">About</h2>
-            
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    2007年生まれ.<br>
-                    幼少期より数学及び音楽（ピアノ、打楽器、作編曲）に強い興味を抱き、現在は両者の関係性に着目し、数的アルゴリズムによる作曲や、数学への聴覚的アプローチの導入など、両者を統合したインタラクティブな表現方法を追求。<br>
-                    また、自身の研究知見を楽器設計に応用し、デザイン、ブランディング、演奏までを一貫して行う。(イタリア国際打楽器コンクール最高位ほか)<br>
-                    そして、自身の経験から日本におけるギフテッド教育およびSTEAM教育にも注目し、学問や芸術の枠にとらわれない多様で創造的な教育像を模索。<br>
-                    関心領域は、物理学、トポロジー、楽器デザイン、AI、プログラミングから、油絵、デザイン、俳句、ルービックキューブなど。<br>
-                    学問・芸術・ものづくりの境界を越え、数理的思考と感性の調和から、新たな価値と表現のかたちの創造することが興味の中心。
-                </div>
-                <div class="col-en">
-                    <span class="number">01</span>
-                    Born in 2007.<br>
-                    From an early age, I developed a profound interest in both Mathematics and Music. Currently, I focus on the interrelation between these two fields, pursuing new expressive methods through the integration of stochastic/statistical composition via numerical algorithms, and the introduction of auditory approaches to mathematical concepts.<br>
-                    Drawing from my personal background, I am also deeply engaged in developing diverse and creative educational models for Gifted and STEAM Education in Japan, transcending traditional academic and artistic boundaries.<br>
-                    My interests span a wide range, including Physics, Topology, AI, Programming, Oil Painting, Design, Haiku, Rubik's Cube, and Instrument Design.<br>
-                    I continuously strive to create new value and forms of expression by harmonizing mathematical rigor with artistic sensibility.
-                </div>
-            </div>
+            <h2>Career</h2>
+            <ul>
+                <li><span class="year">2025年</span> RYU Percussion 代表・プロデューサー</li>
+                <li><span class="year">2026年</span> steAm Inc.(カリキュラム開発、プログラム開発、広報業務全般,イベントサポート)</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <strong>Career</strong><br>
-                    2025年 RYU Percussion 代表・プロデューサー<br>
-                    2026年 steAm Inc. (カリキュラム開発、広報全般等)
-                </div>
-                <div class="col-en">
-                    <span class="number">02</span>
-                    <strong>Career</strong><br>
-                    2025: RYU Percussion Founder & Producer<br>
-                    2026: steAm Inc. (Curriculum Development, PR)
-                </div>
-            </div>
-        </section>
+            <h2>Skills</h2>
+            <h3>◾️数学 & 物理学 (Mathematics & Physics)</h3>
+            <ul>
+                <li><strong>研究基盤:</strong> 複素解析、トポロジー、解析的数論（ζ関数）</li>
+                <li><strong>応用モデル:</strong> 確率過程（マルコフ連鎖、点過程）、群論、非ユークリッド幾何学</li>
+                <li><strong>物理・音響:</strong> 音響物理学、振動・波動論、リズム生成の数理解析</li>
+            </ul>
 
-        <section id="academics" class="page-section">
-            <h2 class="section-title reveal">Academics</h2>
+            <h3>◾️音楽 & 作曲 (Music & Composition)</h3>
+            <ul>
+                <li><strong>演奏:</strong> ピアノ、スネアドラムソロ、パーカッション</li>
+                <li><strong>理論・作曲:</strong> 数理的作曲（確率モデル・マルコフ連鎖・クセナキス的手法・音響的多元構造など）、編曲、サウンドデザイン、ポリリズム</li>
+                <li><strong>応用:</strong> 楽器設計、音響解析、物理音響モデリング、音響工学</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    主に、数理構造と音響・知覚との対応関係を主題として、解析的数論、確率モデル、音響物理学を基盤に、抽象的数学構造を聴覚的・物理的現象へと写像する理論と実装を研究しています。<br><br>
-                    主な関心領域：<br>
-                    ・関数およびその解の分布のソニフィケーション<br>
-                    ・確率過程・群論に基づくアルゴリズミック作曲<br>
-                    ・理論的合理性に基づく楽器設計<br><br>
-                    理論構築から数値実装、実験的検証、応用設計までを一貫して行い、数理的思考と感性の接点における新たな研究方法論の確立を目指しています。
-                </div>
-                <div class="col-en">
-                    <span class="number">01</span>
-                    Focusing primarily on the correspondence between mathematical structures and acoustic perception, I research theories and implementations that map abstract mathematical structures onto auditory and physical phenomena, grounded in analytic number theory, stochastic models, and acoustical physics.<br><br>
-                    Core interests:<br>
-                    - Sonification of functions and their root distributions.<br>
-                    - Algorithmic composition based on stochastic processes and group theory.<br>
-                    - Instrument design based on theoretical rationality.<br><br>
-                    By seamlessly integrating theoretical construction, numerical implementation, experimental verification, and applied design, I aim to establish new research methodologies at the intersection of mathematical thought and artistic sensibility.
-                </div>
-            </div>
+            <h3>◾️プログラミング & AI (Programming & AI)</h3>
+            <ul>
+                <li><strong>使用言語:</strong> Python</li>
+                <li><strong>信号処理:</strong> デジタル信号処理 (DSP)、高速フーリエ変換 (FFT)、パワースペクトル密度 (PSD)、ウェーブレット変換、ゼロ点分布解析</li>
+                <li><strong>AI・機械学習:</strong> 深層学習（RNN, VAE, GANs）による作曲モデルの構築</li>
+                <li><strong>システム開発:</strong> 確率的作曲システム、変拍子生成アルゴリズム、音響データ解析ツールの実装</li>
+                <li><strong>Web・ソフトウェア基盤構築:</strong> インタラクティブUIを備えた研究用Webアプリケーション開発、再現性・保守性を考慮したコード設計</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <strong>1. Statistical Sonification of Spectral Rigidity in the Riemann Zeta Zeros</strong><br>
-                    ― A Psychoacoustically Grounded Framework for Real-Time Structural Monitoring ―<br>
-                    <a href="paper1.pdf" target="_blank">[📄 PDF]</a><br><br>
-                    リーマンゼータ関数の非自明零点の統計的性質は、GUE (Gaussian Unitary Ensemble) の固有値統計と一致することが知られている。この対応の本質は、数列が示すスペクトル剛性（spectral rigidity）にある。<br>
-                    GUEでは数分散 $\Sigma^2(L)$ が対数的抑制を示す一方、ポアソン過程では線形成長を示す。<br>
-                    零点列 $\{\gamma_n\}$ → 正規化間隔列 $\{s_n\}$ → 連続制御信号 $S(t)$ → FM合成音響信号 $y(t)$ → スペクトルエントロピー $H(t)$ の階層的写像を通じ、GUE状態（$\langle s \rangle \approx 1$）での倍音整列と、剛性崩壊時（$S \neq 1$）の臨界帯域内干渉を評価。混合モデル $s_{mix} = (1-\alpha)s_{GUE} + \alpha s_{Poi}$ において検出閾値 $\alpha \approx 0.4$ を確認した。
-                </div>
-                <div class="col-en">
-                    <span class="number">02</span>
-                    <strong>1. Statistical Sonification of Spectral Rigidity in the Riemann Zeta Zeros</strong><br>
-                    <a href="paper1.pdf" target="_blank">[📄 PDF]</a><br><br>
-                    The statistical properties of the non-trivial zeros of the Riemann zeta function are known to align with the eigenvalue statistics of the Gaussian Unitary Ensemble (GUE). The essence of this correspondence lies in the spectral rigidity exhibited by the sequence.<br>
-                    While the number variance $\Sigma^2(L)$ shows logarithmic suppression in GUE, it grows linearly in a Poisson process. Through a hierarchical mapping of the zero sequence $\{\gamma_n\}$ to spectral entropy $H(t)$, this study evaluates harmonic alignment in the GUE state ($\langle s \rangle \approx 1$) and critical band interference during rigidity breakdown ($S \neq 1$).
-                </div>
-            </div>
+            <h3>◾️デザイン & コミュニケーション (Design & Communication)</h3>
+            <ul>
+                <li><strong>ビジュアル:</strong> 油絵、グラフィックデザイン、数学的・音響的データのビジュアライゼーション</li>
+                <li><strong>応用:</strong> 楽器デザイン、音響インスタレーション</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <strong>2. Quantitative Analysis of Constituent Component Effects on Snare Drum Acoustics</strong><br>
-                    <a href="paper2.pdf" target="_blank">[📄 PDF]</a><br><br>
-                    スネアドラム音響特性を、構成要素（ワイヤー・スティック・スタンド）の多因子相互作用として統計的に分解する。三元配置完全要因実験に基づくThree-way ANOVA（$\eta^2$算出）、PCA、交差検証 $R^2 = 0.686 \pm 0.010$ を実施。<br>
-                    ワイヤー効果が最大寄与（$\eta^2 = 0.22$）を示し、懸架型スタンドがディケイ時間を有意に延長することなどを定量化。経験則中心であった楽器設計領域を効果量ベースの定量モデルへ拡張した。
-                </div>
-                <div class="col-en">
-                    <span class="number">03</span>
-                    <strong>2. Quantitative Analysis of Constituent Component Effects on Snare Drum Acoustics</strong><br>
-                    <a href="paper2.pdf" target="_blank">[📄 PDF]</a><br><br>
-                    This study statistically decomposes the acoustic characteristics of snare drums as multifactorial interactions of components (wires, sticks, stands). Using Three-way ANOVA ($\eta^2$), PCA, and cross-validation ($R^2 = 0.686 \pm 0.010$), we quantified that wire effects have the maximum contribution ($\eta^2 = 0.22$) and suspension stands significantly extend decay time. This extends instrument design from empirical rules to an effect-size-based quantitative model.
-                </div>
-            </div>
-        </section>
+            <h3>◾️SNS運用 & マーケティング</h3>
+            <ul>
+                <li><strong>Instagram運用:</strong> AIによるデータ分析・戦略により運用半年でフォロワー1万人増、月間100万リーチ達成など</li>
+                <li><strong>クリエイティブ制作:</strong> Davinci Resolve, Premiere Pro,Canvaほか</li>
+            </ul>
 
-        <section id="art" class="page-section">
-            <h2 class="section-title reveal">Art</h2>
+            <h3>◾️言語 (Languages)</h3>
+            <ul>
+                <li>ドイツ語、フランス語、英語、日本語、イタリア語、スペイン語</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <img src="ma1.jpg" alt="E8 Root System" class="asset-img" onerror="this.src='https://via.placeholder.com/800x600/111/fff?text=ma1.jpg'">
-                    <strong>1. $E_8$ルート系：コクセター平面への射影</strong><br>
-                    例外型単純リー環 $E_8$ のルート系（240個のベクトル）を、8次元ユークリッド空間からコクセター平面へ線形射影した幾何学的可視化。$E_8$ のルート系は $\mathbb{R}^8$ において対称性を持ち、コクセター元 $w$ の固有平面（固有値 $\exp(2\pi i/h)$）への射影により、8次元の対称性が2次元平面上の30回回転対称性として現れる。
-                </div>
-                <div class="col-en">
-                    <span class="number">01</span>
-                    <strong>1. $E_8$ Root System: Projection onto the Coxeter Plane</strong><br><br>
-                    A geometric visualization of the root system of the exceptional simple Lie algebra $E_8$ (240 vectors) linearly projected from 8-dimensional Euclidean space onto the Coxeter plane. The root system of $E_8$ in $\mathbb{R}^8$ is governed by highly complex symmetries. By projecting onto the eigenspace of the Coxeter element $w$ (eigenvalue $\exp(2\pi i/h)$), the 8D symmetry emerges as a 30-fold rotational symmetry in 2D space.
-                </div>
-            </div>
+            <h2>Projects</h2>
+            <h3>◾️楽器デザイン (Instruments design)</h3>
+            <ul>
+                <li><strong>RYU Percussion</strong>
+                    <div class="overview">概要: 音響物理学の知見に基づく楽器設計。設計、製作、演奏、ブランディング。</div>
+                </li>
+                <li><strong>主な設計:</strong> Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <img src="ma2.jpg" alt="600-Cell" class="asset-img" onerror="this.src='https://via.placeholder.com/800x600/111/fff?text=ma2.jpg'">
-                    <strong>2. 600胞体：4次元正多胞体と $H_4$ 対称性</strong><br>
-                    4次元空間における正多胞体「600胞体」の、黄金比に基づく構造保存射影。その対称群は非結晶学的コクセター群 $H_4$ であり、構造には黄金比 $\phi = (1+\sqrt{5})/2$ が組み込まれている。各頂点は隣接頂点と黄金比の距離で結ばれ、自己相似的な五次対称性を有するマンダラ状のパターンを創発する。
-                </div>
-                <div class="col-en">
-                    <span class="number">02</span>
-                    <strong>2. The 600-Cell: Four-Dimensional Regular Polytope and $H_4$ Symmetry</strong><br><br>
-                    A structure-preserving projection of the 4D regular polytope "600-Cell," based on the golden ratio. Its symmetry group is the non-crystallographic Coxeter group $H_4$, inherently incorporating the golden ratio $\phi = (1+\sqrt{5})/2$. The projection generates a mandala-like pattern with self-similar 5-fold symmetry, visually expressing the topological constraints imposed by high-dimensional geometry.
-                </div>
-            </div>
+            <h3>◾️研究論文 & 執筆 (Publications & Writing)</h3>
+            <ul>
+                <li>
+                    <strong>[研究論文] リーマンゼータ零点の多角的ソニフィケーション：相補的音響表現による数論的構造の知覚的解析 (2025)</strong>
+                    <div class="overview">概要: ゼータ関数の零点を、ソニフィケーションし、その知覚的有効性を評価する試み。</div>
+                </li>
+                <li>
+                    <strong>[研究論文] スネアドラムの構成要素がその音響特性に与える物理的影響の定量的評価 (2025)</strong>
+                    <div class="overview">概要: スネアドラムの主要要素がそのティンバーに与える影響を定量化。楽器設計理論の基盤。</div>
+                </li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <img src="ma3.jpg" alt="10D Hypercube" class="asset-img" onerror="this.src='https://via.placeholder.com/800x600/111/fff?text=ma3.jpg'">
-                    <strong>3. 10次元超立方体：高次元正射影とペトリー多角形</strong><br>
-                    10次元単位超立方体の全1024頂点と5120本のエッジによる正射影。10次元空間の基底を $\mathbb{R}^2$ 上の20角形の頂点へとマッピングすることで対称性を実現。中心部のモアレは、高次元情報の圧縮プロセスにおける情報の保存と干渉を幾何学的に記述したものである。
-                </div>
-                <div class="col-en">
-                    <span class="number">03</span>
-                    <strong>3. 10D Hypercube: High-Dimensional Orthographic Projection and Petrie Polygons</strong><br><br>
-                    An orthographic projection of the 10-dimensional unit hypercube (1024 vertices, 5120 edges). By mapping the basis of the 10D space to the vertices of a 20-sided polygon in $\mathbb{R}^2$, maximum symmetry is achieved. The complex moiré patterns at the center geometrically describe information preservation and interference in the compression of high-dimensional data.
-                </div>
-            </div>
-        </section>
+            <h3>◾️開発 (Software & Systems)</h3>
+            <ul>
+                <li>
+                    <strong>Mathematical Composition System (2024)</strong>
+                    <div class="overview">概要: 確率過程（マルコフ連鎖等）及び統計的手法を用いたリズム・音響生成システム。</div>
+                    <div class="overview">実装: Pythonにて実装。</div>
+                </li>
+                <li>
+                    <strong>音響信号処理の自動可視化ツール (内部ツール)</strong>
+                    <div class="overview">概要: FFT、PSD、ウェーブレット変換など、音響データ解析の結果をバッチ処理で自動可視化するツール。研究・開発効率の向上に貢献。</div>
+                </li>
+            </ul>
 
-        <section id="music" class="page-section">
-            <h2 class="section-title reveal">Music</h2>
+            <h3>◾️音楽活動、作品 (Art Works & Performances)</h3>
+            <ul>
+                <li>
+                    <strong>Snare Solo / Snare × Piano (Instagram)</strong>
+                    <div class="overview">概要: 自作スネアドラム（RYU Percussion）のソロ演奏および、スネアとピアノの演奏。</div>
+                </li>
+                <li>
+                    <strong>Solo Works</strong>
+                    <div class="overview">概要: スネアドラムソロやスネアコンチェルトなど。数理的手法に基づく作曲など。</div>
+                </li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <strong>Philosophy</strong><br>
-                    数学的知性と芸術的感性の統合。 数理アルゴリズムによる作曲、音響物理学に基づく楽器設計、そして演奏。 学問と芸術の境界を越え、数理的思考から新たな表現の形を創造する。
-                </div>
-                <div class="col-en">
-                    <span class="number">01</span>
-                    <strong>Philosophy</strong><br>
-                    The integration of mathematical intellect and artistic sensibility. Algorithmic composition, acoustically engineered instrument design, and performance. Transcending boundaries to create new forms of expression.
-                </div>
-            </div>
+            <h3>◾️教育 (Education)</h3>
+            <ul>
+                <li>数学、音楽、芸術、プログラミングなどさまざまな分野を横断する、統合的教育モデルを構想。</li>
+                <li>STEM教育とギフテッド教育を融合させた多様で創造的な教育像を提案。</li>
+            </ul>
 
-            <div class="reveal" style="margin-top: 5rem;">
-                <h3 style="text-align: center; margin-bottom: 2rem;">Video Archive</h3>
-                <div class="video-grid">
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <video controls poster="https://via.placeholder.com/540x960/111/fff?text=Thumbnail+1">
-                                <source src="video1.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="video-title">Snare Solo 01</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <video controls poster="https://via.placeholder.com/540x960/111/fff?text=Thumbnail+2">
-                                <source src="video2.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="video-title">Snare Solo 02</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <video controls poster="https://via.placeholder.com/540x960/111/fff?text=Thumbnail+3">
-                                <source src="video3.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="video-title">Snare Solo 03</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <video controls poster="https://via.placeholder.com/540x960/111/fff?text=Thumbnail+4">
-                                <source src="video4.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="video-title">Marimba 01</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <video controls poster="https://via.placeholder.com/540x960/111/fff?text=Thumbnail+5">
-                                <source src="video5.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="video-title">Piano/Snare 01</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <video controls poster="https://via.placeholder.com/540x960/111/fff?text=Thumbnail+6">
-                                <source src="video6.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="video-title">Piano/Snare 02</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <h2>Core Research Themes</h2>
+            <h3>◾️解析的数論のソニフィケーション (Sonification of Analytic Number Theory)</h3>
+            <ul>
+                <li>リーマンゼータ関数の零点分布や素数分布といった数論的構造と、音響パラメータ（周波数、リズム、音色）との構造的対応を研究。</li>
+                <li>ソニフィケーションによって、数理的概念と聴覚的情報を対応させ、数理構造の知覚に新たなアプローチを見出す。</li>
+            </ul>
 
-        <section id="instruments" class="page-section">
-            <h2 class="section-title reveal">Instruments</h2>
+            <h3>◾️アルゴリズミック作曲と数理モデル (Algorithmic Composition & Mathematical Models)</h3>
+            <ul>
+                <li>クセナキス（Iannis Xenakis）の確率論的手法（Stochastic Music）、マルコフ連鎖、群論、非ユークリッド幾何学などの数理モデルを用いた作曲アルゴリズムを構築。</li>
+                <li>ポリリズムとその知覚構造の対応</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <img src="snare.jpg" alt="The Full-Wooden Snare" class="asset-img" onerror="this.src='https://via.placeholder.com/800x600/111/fff?text=The+Full-Wooden+Snare'">
-                    <strong>The Full-Wooden Snare</strong><br>
-                    100% Wood. 100% Handmade. 音響物理学への深い洞察に基づき、シェルからラグ、フープに至るすべてのパーツを木材で設計。金属パーツによる干渉を排除し、有機的で純粋な響きを追求した一台。
-                </div>
-                <div class="col-en">
-                    <span class="number">01</span>
-                    <strong>The Full-Wooden Snare</strong><br><br>
-                    100% Wood. 100% Handmade. Based on deep insights into acoustical physics, every component—from the shell and lugs to the hoops—is designed in wood. Eliminating metallic interference, this snare pursues an organic and pure resonance.
-                </div>
-            </div>
+            <h3>◾️音響物理学と楽器設計への応用 (Acoustical Physics & Application to Instrument Design)</h3>
+            <ul>
+                <li>スネアドラム等の打楽器が発する音響の物理的特性（振動モード、減衰率、周波数特性）を、実験とシミュレーション（物理音響モデリング）によって定量的・数理的に評価。</li>
+                <li>この知見を楽器設計に直接フィードバックし、音響特性を意図的にデザイン。</li>
+            </ul>
 
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <img src="stand1.jpg" alt="Snare Stand I" class="asset-img" onerror="this.src='https://via.placeholder.com/800x600/111/fff?text=Snare+Stand+I'">
-                    <strong>Snare Stand I: Suspension Model</strong><br>
-                    Inspired by Vintage Military Snares. クランプによる締め付けを排除し、紐で「吊るす」構造を採用。シェルの振動を一切殺さない、極めてオープンで自由なサウンドを実現。
-                </div>
-                <div class="col-en">
-                    <span class="number">02</span>
-                    <strong>Snare Stand I: Suspension Model</strong><br><br>
-                    Inspired by Vintage Military Snares. Eliminating clamp pressure, this model utilizes a suspended string structure. It allows the shell to vibrate completely freely, producing an extremely open sound.
-                </div>
-            </div>
-            
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <img src="stand2.jpg" alt="Snare Stand II" class="asset-img" onerror="this.src='https://via.placeholder.com/800x600/111/fff?text=Snare+Stand+II'">
-                    <strong>Snare Stand II: Quadrilateral Model</strong><br>
-                    Stability and Portability. 木製4本構造による、圧倒的な安定感と軽量化の両立。<br><br>
-                    <em>„Die kleine Trommel soll frei klingen, und nicht nur geschlagen werden.“ (Richard Hochrainer)</em><br>
-                    — 小太鼓は単に打たれるものではなく、自由に響くべきである。
-                </div>
-                <div class="col-en">
-                    <span class="number">03</span>
-                    <strong>Snare Stand II: Quadrilateral Model</strong><br><br>
-                    Stability and Portability. A 4-pillar wooden structure achieving both overwhelming stability and light weight.<br><br>
-                    <em>The snare drum should ring freely, not just be struck.</em><br>
-                    A physical approach to liberate resonance from fixation.
-                </div>
-            </div>
-        </section>
+            <h2>Contact & Collaboration</h2>
+            <p>
+                研究に関するご質問やご指摘、音楽活動などにご興味がございましたら、下記SNSよりお気軽にご連絡ください。
+            </p>
+            <ul>
+                <li>
+                    <a href="<https://www.instagram.com/ryu_percussion/>" target="_blank" rel="noopener noreferrer">Instagram (@ryu_percussion)</a>
+                </li>
+            </ul>
 
-        <section id="archive" class="page-section">
-            <h2 class="section-title reveal">Public Archive</h2>
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    <strong>Scores for Evolution</strong><br>
-                    自身の研究プロセスから生まれた数理的作曲、および打楽器・ピアノのための編曲作品の一部を、無償で公開しています。演奏、研究、あるいは新たな創作の起点として。<br><br>
-                    <a href="scores.pdf" target="_blank">[📄 Download Scores PDF]</a>
-                </div>
-                <div class="col-en">
-                    <span class="number">01</span>
-                    <strong>Scores for Evolution</strong><br>
-                    A selection of mathematical compositions and arrangements born from my research process, made available to the public. Serving as a starting point for performance, research, or new creation.
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <section id="contact" class="page-section">
-            <h2 class="section-title reveal">Contact</h2>
-            <div class="bilingual-row reveal">
-                <div class="col-ja">
-                    研究に関するご質問やご指摘、音楽活動などにご興味がございましたら、SNS等よりお気軽にご連絡ください。<br><br>
-                    <a href="https://www.instagram.com/ryu_percussion/" target="_blank"><i class="fab fa-instagram"></i> Instagram (@ryu_percussion)</a><br>
-                    <a href="mailto:ryu.percussion.contact@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                </div>
-                <div class="col-en">
-                    <span class="number">01</span>
-                    For research inquiries, academic collaboration, or performance opportunities, please feel free to reach out via the links provided.
-                </div>
-            </div>
-        </section>
+        <div id="lang-en" class="lang-content" style="display:none;">
 
-    </main>
+            <h1>RYU</h1>
 
-    <script>
-        // SPA Navigation Logic
-        function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            const target = document.getElementById(pageId);
-            if (target) {
-                target.classList.add('active');
-                
-                // Re-trigger animations for reveal elements within the new section
-                setTimeout(() => {
-                    handleScroll();
-                }, 100);
-            }
-            
-            // Update nav active state
-            document.querySelectorAll('nav ul li a').forEach(link => {
-                link.classList.remove('active');
-            });
-            document.getElementById('link-' + pageId).classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
+            <h2>About Me</h2>
+            <p>
+                Born in 2007.
+                From an early age, I developed a profound interest in both Mathematics (specifically Prime Numbers and the Riemann Zeta Function) and Music (Piano, Percussion, Composition, and Arranging). Currently, I focus on the interrelation between these two fields, pursuing new expressive methods through the integration of stochastic/statistical composition via numerical algorithms, and the introduction of auditory approaches (Sonification) to mathematical concepts.
+                Drawing from my personal background, I am also deeply engaged in developing diverse and creative educational models for Gifted and STEAM Education in Japan, transcending traditional academic and artistic boundaries.
+                My interests span a wide range, including Physics, Topology, AI, Programming, Oil Painting, Design, Haiku, Rubik's Cube, and Instrument Design.
+                I continuously strive to create new value and forms of expression by harmonizing mathematical rigor with artistic sensibility, bridging the boundaries between academia, art, and craftsmanship.
+            </p>
+            <ul>
+                <li><strong>Age:</strong> 18</li>
+                <li><strong>Major:</strong> 1st-year student, Faculty of Economics (Undergraduate)</li>
+                <li><strong>Interests:</strong> Mathematical Musicology / Mathematics / Music / Physics / Algorithmic Composition / AI / Programming / Painting / Design / Haiku / Rubik's Cube / Gifted Education / STEAM Education / Machine Learning / Instrument Design / SNS Management & Marketing</li>
+                <li><strong>Research Themes:</strong> Mathematical Musicology / Algorithmic Composition / Acoustical Physics / Analytic Number Theory / AI & Machine Learning / Sonification / ζ-Function / Prime Numbers / STEM & Gifted Education</li>
+            </ul>
 
-        // Scroll Reveal Logic
-        function handleScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            const windowHeight = window.innerHeight;
-            
-            reveals.forEach(reveal => {
-                // Check if element is visible
-                const elementTop = reveal.getBoundingClientRect().top;
-                const elementVisible = 100;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('visible');
-                }
-            });
-        }
+            <h2>Career</h2>
+            <ul>
+                <li><span class="year">2025</span> RYU Percussion Founder & Producer</li>
+                <li><span class="year">2026</span> steAm Inc.(Curriculum Development, Program Development, General PR Operations, Event Support)</li>
+            </ul>
 
-        window.addEventListener('scroll', handleScroll);
-        // Initial check
-        window.addEventListener('load', handleScroll);
-    </script>
+            <h2>Skills</h2>
+            <h3>◾️Mathematics & Physics</h3>
+            <ul>
+                <li><strong>Foundational Research:</strong> Complex Analysis, Topology, Analytic Number Theory (ζ-Function)</li>
+                <li><strong>Applied Models:</strong> Stochastic Processes (Markov Chains, Point Processes), Group Theory, Non-Euclidean Geometry</li>
+                <li><strong>Physics & Acoustics:</strong> Acoustical Physics, Vibration and Wave Theory, Mathematical Analysis of Rhythm Generation</li>
+            </ul>
+
+            <h3>◾️Music & Composition</h3>
+            <ul>
+                <li><strong>Performance:</strong> Piano, Snare Drum Solo, Percussion </li>
+                <li><strong>Theory & Composition:</strong> Mathematical Composition (Stochastic Models, Markov Chains, Xenakis' Stochastic Methods, Acoustic Plural Structure), Arrangement, Sound Design, Polyrhythms, (Possesses Absolute Pitch)</li>
+                <li><strong>Application:</strong> Instrument Design, Acoustic Analysis, Physical Sound Modeling, Sound Engineering</li>
+            </ul>
+
+            <h3>◾️Programming & AI</h3>
+            <ul>
+                <li><strong>Languages:</strong> Python</li>
+                <li><strong>Signal Processing:</strong> Digital Signal Processing (DSP), Fast Fourier Transform (FFT), Power Spectral Density (PSD), Wavelet Transform, Zero-crossing Distribution Analysis</li>
+                <li><strong>AI & Machine Learning:</strong> Deep Learning (RNN, VAE, GANs) for Compositional Model Development</li>
+                <li><strong>System Development:</strong> Implementation of Stochastic Composition Systems, Polymeter/Odd-meter Generation Algorithms, Acoustic Data Analysis Tools</li>
+            </ul>
+
+            <h3>◾️Design & Communication</h3>
+            <ul>
+                <li><strong>Visual:</strong> Oil Painting, Graphic Design, Mathematical/Acoustic Data Visualization</li>
+                <li><strong>Application:</strong> Instrument Design, Acoustic Installation</li>
+            </ul>
+
+             <h3>◾️SNS Management & Marketing</h3>
+            <ul>
+                <li><strong>Instagram Management:</strong> Achieved 10K new followers within six months and 1M monthly reach through AI-driven data analysis and strategy</li>
+                <li><strong>Creative Production:</strong> Davinci Resolve, Premiere Pro, Canva, and others</li>
+            </ul>
+
+            <h3>◾️Languages</h3>
+            <ul>
+                <li>German, French, English, Japanese, Italian, Spanish</li>
+            </ul>
+
+            <h2>Projects</h2>
+            <h3>◾️Instruments Design</h3>
+            <ul>
+                <li>
+                    <strong>RYU Percussion</strong>
+                    <div class="overview">Overview: Custom instrument design based on acoustical physics. Engages in design, production, performance, and branding.</div>
+                </li>
+                <li><strong>Instruments:</strong> Snare Drum, Snare Stand, Percussion Stands, Percussion Mallets…</li>
+            </ul>
+
+            <h3>◾️Publications & Writing</h3>
+            <ul>
+                <li>
+                    <strong>[Research Paper] Multi-Faceted Sonification of Riemann Zeta Zeros: Perceptual Analysis of Number Theoretic Structures via Complementary Acoustic Representation (2025)</strong>
+                    <div class="overview">Overview: Attempt to evaluate the perceptual efficacy of mapping Zeta function zeros to various sonification parameters.</div>
+                </li>
+                <li>
+                    <strong>[Research Paper] Quantitative Evaluation of the Physical Impact of Snare Drum Components on their Acoustic Characteristics (2025)</strong>
+                    <div class="overview">Overview: Quantification of the effects of primary snare drum components on timbre. Forms the theoretical foundation for RYU Percussion design.</div>
+                </li>
+            </ul>
+
+            <h3>◾️Development (Software & Systems)</h3>
+            <ul>
+                <li>
+                    <strong>Mathematical Composition System (2024)</strong>
+                    <div class="overview">Overview: A rhythm and acoustic generation system utilizing stochastic processes (e.g., Markov Chains) and statistical methods.</div>
+                    <div class="overview">Implementation: Developed in Python.</div>
+                </li>
+                <li>
+                    <strong>Automated Visualization Tool for Acoustic Signal Processing (Internal Tool)</strong>
+                    <div class="overview">Overview: A tool for batch processing and automated visualization of acoustic data analysis results (FFT, PSD, Wavelet Transform), enhancing research and development efficiency.</div>
+                </li>
+            </ul>
+
+            <h3>◾️Music Activities & Works</h3>
+            <ul>
+                <li>
+                    <strong>Snare Solo / Snare × Piano (Instagram)</strong>
+                    <div class="overview">Overview: Solo performances on custom RYU Percussion snare drums and collaborative works with piano.</div>
+                </li>
+                <li>
+                    <strong>Solo Works</strong>
+                    <div class="overview">Overview: A collection of works, including solos and concertos for snare drum, exploring its full potential, including those composed using mathematical methods.</div>
+                </li>
+            </ul>
+
+            <h3>◾️Education</h3>
+            <ul>
+                <li>Conceptualizes an integrated educational model that crosses the boundaries of Mathematics, Music, Art, and Programming.</li>
+                <li>Proposes a diverse and creative educational vision that merges STEM and Gifted Education methodologies.</li>
+            </ul>
+
+            <h2>Core Research Themes</h2>
+            <h3>◾️Sonification of Analytic Number Theory</h3>
+            <ul>
+                <li>Researching the structural correspondence between number-theoretic structures (e.g., Riemann Zeta Zero distribution, Prime Number distribution) and acoustic parameters (frequency, rhythm, timbre).</li>
+                <li>Utilizing sonification to correlate mathematical concepts with auditory information, pioneering a new approach to the perception of mathematical structures.</li>
+            </ul>
+
+            <h3>◾️Algorithmic Composition & Mathematical Models</h3>
+            <ul>
+                <li>Developing compositional algorithms utilizing mathematical models such as Iannis Xenakis' Stochastic Music, Markov Chains, Group Theory, and Non-Euclidean Geometry.</li>
+                <li>Investigating the correlation between polyrhythms and their perceptual structures.</li>
+            </ul>
+
+            <h3>◾️Acoustical Physics & Application to Instrument Design</h3>
+            <ul>
+                <li>Quantitatively and mathematically evaluating the physical characteristics (vibration modes, decay rate, frequency response) of percussion instruments like the snare drum through experimentation and simulation (physical sound modeling).</li>
+                <li>Directly feeding this knowledge into the custom instrument design process at "RYU Percussion" to intentionally engineer the acoustic characteristics.</li>
+            </ul>
+
+            <h2>Contact & Collaboration</h2>
+            <p>
+                For research inquiries, academic collaboration, music performance opportunities, or any other professional interest, please feel free to contact me via the social links below.
+            </p>
+            <ul>
+                <li>
+                    <a href="<https://www.instagram.com/ryu_percussion/>" target="_blank" rel="noopener noreferrer">Instagram (@ryu_percussion)</a>
+                </li>
+            </ul>
+
+        </div>
+    </section>
+</div>
+```
+
 </body>
 </html>
